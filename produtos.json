@@ -1,0 +1,2425 @@
+[
+    {
+        "pagina":  2,
+        "nome":  "Cadeira Acrilica Dior (Assento Branco ou preto)",
+        "valor":  11.00,
+        "categoria":  "Cadeira",
+        "tags":  [
+                     "acrilica",
+                     "dior",
+                     "transparente"
+                 ]
+    },
+    {
+        "pagina":  2,
+        "nome":  "Cadeira Acrilica Dior Dourada",
+        "valor":  12.00,
+        "categoria":  "Cadeira",
+        "tags":  [
+                     "acrilica",
+                     "dior",
+                     "dourada"
+                 ]
+    },
+    {
+        "pagina":  2,
+        "nome":  "Cadeira Tiffany Cristal (Assento Branco ou preto)",
+        "valor":  10.00,
+        "categoria":  "Cadeira",
+        "tags":  [
+                     "tiffany",
+                     "cristal",
+                     "transparente"
+                 ]
+    },
+    {
+        "pagina":  2,
+        "nome":  "Cadeira Sofia Transparente",
+        "valor":  22.00,
+        "categoria":  "Cadeira",
+        "tags":  [
+                     "sofia",
+                     "transparente",
+                     "acrilica"
+                 ]
+    },
+    {
+        "pagina":  2,
+        "nome":  "Cadeira Preta",
+        "valor":  5.20,
+        "categoria":  "Cadeira",
+        "tags":  [
+                     "preta",
+                     "plastico"
+                 ]
+    },
+    {
+        "pagina":  2,
+        "nome":  "Cadeira Tela Ferrugem",
+        "valor":  6.30,
+        "categoria":  "Cadeira",
+        "tags":  [
+                     "tela",
+                     "ferrugem",
+                     "metal"
+                 ]
+    },
+    {
+        "pagina":  2,
+        "nome":  "Cadeira Branca Italy",
+        "valor":  5.90,
+        "categoria":  "Cadeira",
+        "tags":  [
+                     "branca",
+                     "italy",
+                     "plastico"
+                 ]
+    },
+    {
+        "pagina":  2,
+        "nome":  "Cadeira Madeira Verde",
+        "valor":  4.50,
+        "categoria":  "Cadeira",
+        "tags":  [
+                     "madeira",
+                     "verde",
+                     "dobravel"
+                 ]
+    },
+    {
+        "pagina":  2,
+        "nome":  "Cadeira Goyana",
+        "valor":  4.00,
+        "categoria":  "Cadeira",
+        "tags":  [
+                     "goyana",
+                     "branca",
+                     "plastico"
+                 ]
+    },
+    {
+        "pagina":  3,
+        "nome":  "Taça Stylo 260 ml",
+        "valor":  16.00,
+        "categoria":  "Taça",
+        "tags":  [
+                     "stylo",
+                     "260ml",
+                     "vidro",
+                     "dúzia"
+                 ]
+    },
+    {
+        "pagina":  3,
+        "nome":  "Taça Floripa 300 ml",
+        "valor":  19.00,
+        "categoria":  "Taça",
+        "tags":  [
+                     "floripa",
+                     "300ml",
+                     "vidro",
+                     "dúzia"
+                 ]
+    },
+    {
+        "pagina":  3,
+        "nome":  "Copo Tulipa 300 ml",
+        "valor":  16.00,
+        "categoria":  "Copo",
+        "tags":  [
+                     "tulipa",
+                     "300ml",
+                     "vidro",
+                     "dúzia"
+                 ]
+    },
+    {
+        "pagina":  3,
+        "nome":  "Taça Água/Vinho Boemia 450 ml (Cristal)",
+        "valor":  33.00,
+        "categoria":  "Taça",
+        "tags":  [
+                     "agua",
+                     "vinho",
+                     "boemia",
+                     "450ml",
+                     "cristal",
+                     "dúzia"
+                 ]
+    },
+    {
+        "pagina":  3,
+        "nome":  "Taça Água/Vinho Barone 490 ml",
+        "valor":  25.00,
+        "categoria":  "Taça",
+        "tags":  [
+                     "agua",
+                     "vinho",
+                     "barone",
+                     "490ml",
+                     "vidro",
+                     "dúzia"
+                 ]
+    },
+    {
+        "pagina":  3,
+        "nome":  "Taça Vinho Barone 350 ml",
+        "valor":  25.00,
+        "categoria":  "Taça",
+        "tags":  [
+                     "vinho",
+                     "barone",
+                     "350ml",
+                     "vidro",
+                     "dúzia"
+                 ]
+    },
+    {
+        "pagina":  3,
+        "nome":  "Taça Champagne Boemia 220 ml (Cristal)",
+        "valor":  33.00,
+        "categoria":  "Taça",
+        "tags":  [
+                     "champagne",
+                     "boemia",
+                     "220ml",
+                     "cristal",
+                     "dúzia"
+                 ]
+    },
+    {
+        "pagina":  3,
+        "nome":  "Taça Champagne Windsor 210 ml",
+        "valor":  20.00,
+        "categoria":  "Taça",
+        "tags":  [
+                     "champagne",
+                     "windsor",
+                     "210ml",
+                     "vidro",
+                     "dúzia"
+                 ]
+    },
+    {
+        "pagina":  3,
+        "nome":  "Taça Class 260 ml",
+        "valor":  2.70,
+        "categoria":  "Taça",
+        "tags":  [
+                     "class",
+                     "260ml",
+                     "vidro",
+                     "unidade"
+                 ]
+    },
+    {
+        "pagina":  4,
+        "nome":  "Copo Whisky Koper 270 ml",
+        "valor":  18.00,
+        "categoria":  "Copo",
+        "tags":  [
+                     "whisky",
+                     "koper",
+                     "270ml",
+                     "vidro",
+                     "dúzia"
+                 ]
+    },
+    {
+        "pagina":  4,
+        "nome":  "Copo Whisky Amassadinho 250 ml",
+        "valor":  18.00,
+        "categoria":  "Copo",
+        "tags":  [
+                     "whisky",
+                     "amassadinho",
+                     "250ml",
+                     "vidro",
+                     "dúzia"
+                 ]
+    },
+    {
+        "pagina":  4,
+        "nome":  "Copo Whisky Nadir 265 ml",
+        "valor":  16.00,
+        "categoria":  "Copo",
+        "tags":  [
+                     "whisky",
+                     "nadir",
+                     "265ml",
+                     "vidro",
+                     "dúzia"
+                 ]
+    },
+    {
+        "pagina":  4,
+        "nome":  "Caneca Moscow Mule 350 ml",
+        "valor":  3.00,
+        "categoria":  "Caneca",
+        "tags":  [
+                     "moscow mule",
+                     "cobre",
+                     "350ml",
+                     "unidade"
+                 ]
+    },
+    {
+        "pagina":  4,
+        "nome":  "Taça Gim 600 ml",
+        "valor":  28.00,
+        "categoria":  "Taça",
+        "tags":  [
+                     "gim",
+                     "600ml",
+                     "vidro",
+                     "dúzia"
+                 ]
+    },
+    {
+        "pagina":  4,
+        "nome":  "Taça Coquetel 380 ml",
+        "valor":  20.00,
+        "categoria":  "Taça",
+        "tags":  [
+                     "coquetel",
+                     "380ml",
+                     "vidro",
+                     "dúzia"
+                 ]
+    },
+    {
+        "pagina":  4,
+        "nome":  "Copinho Shot / Tequila 40 ml",
+        "valor":  15.00,
+        "categoria":  "Copo",
+        "tags":  [
+                     "shot",
+                     "tequila",
+                     "40ml",
+                     "vidro",
+                     "dúzia"
+                 ]
+    },
+    {
+        "pagina":  4,
+        "nome":  "Taça Dona 65 ml",
+        "valor":  18.00,
+        "categoria":  "Taça",
+        "tags":  [
+                     "dona",
+                     "65ml",
+                     "vidro",
+                     "dúzia"
+                 ]
+    },
+    {
+        "pagina":  4,
+        "nome":  "Taça Mini Martine 100 ml",
+        "valor":  1.90,
+        "categoria":  "Taça",
+        "tags":  [
+                     "mini martini",
+                     "100ml",
+                     "vidro",
+                     "unidade"
+                 ]
+    },
+    {
+        "pagina":  4,
+        "nome":  "Taça Sobremesa 220 ml",
+        "valor":  1.60,
+        "categoria":  "Taça",
+        "tags":  [
+                     "sobremesa",
+                     "220ml",
+                     "vidro",
+                     "unidade"
+                 ]
+    },
+    {
+        "pagina":  4,
+        "nome":  "Taça Ilhabela 180 ml",
+        "valor":  2.20,
+        "categoria":  "Taça",
+        "tags":  [
+                     "ilhabela",
+                     "180ml",
+                     "vidro",
+                     "unidade"
+                 ]
+    },
+    {
+        "pagina":  4,
+        "nome":  "Copo Cappuccino 240 ml",
+        "valor":  20.00,
+        "categoria":  "Copo",
+        "tags":  [
+                     "cappuccino",
+                     "240ml",
+                     "vidro",
+                     "dúzia"
+                 ]
+    },
+    {
+        "nome":  "Talheres Ouro Preto",
+        "categoria":  "Talheres",
+        "valor":  2.00,
+        "tags":  [
+                     "ouro preto",
+                     "unidade"
+                 ]
+    },
+    {
+        "nome":  "Talheres Belle",
+        "categoria":  "Talheres",
+        "valor":  2.00,
+        "tags":  [
+                     "belle",
+                     "unidade"
+                 ]
+    },
+    {
+        "nome":  "Talheres Paris",
+        "categoria":  "Talheres",
+        "valor":  1.50,
+        "tags":  [
+                     "paris",
+                     "dezena"
+                 ]
+    },
+    {
+        "nome":  "Talheres Asian",
+        "categoria":  "Talheres",
+        "valor":  17.00,
+        "tags":  [
+                     "asian",
+                     "dezena"
+                 ]
+    },
+    {
+        "nome":  "Talheres Laguna",
+        "categoria":  "Talheres",
+        "valor":  15.00,
+        "tags":  [
+                     "laguna",
+                     "dezena"
+                 ]
+    },
+    {
+        "nome":  "Pegador de Massa e Salada",
+        "categoria":  "Pegadores",
+        "valor":  6.00,
+        "tags":  [
+                     "massa",
+                     "salada",
+                     "unidade"
+                 ]
+    },
+    {
+        "nome":  "Pinça de Gelo",
+        "categoria":  "Pegadores",
+        "valor":  5.00,
+        "tags":  [
+                     "gelo",
+                     "unidade"
+                 ]
+    },
+    {
+        "nome":  "Colher de Arroz",
+        "categoria":  "Talheres de Servir",
+        "valor":  7.00,
+        "tags":  [
+                     "arroz",
+                     "unidade"
+                 ]
+    },
+    {
+        "nome":  "Concha",
+        "categoria":  "Talheres de Servir",
+        "valor":  7.00,
+        "tags":  [
+                     "concha",
+                     "unidade"
+                 ]
+    },
+    {
+        "nome":  "Prato Mesa/Sob. Maresia",
+        "categoria":  "Pratos",
+        "valor":  2.60,
+        "tags":  [
+                     "mesa",
+                     "sobremesa",
+                     "maresia",
+                     "unidade"
+                 ]
+    },
+    {
+        "nome":  "Prato Mesa/Sob. Pacifico",
+        "categoria":  "Pratos",
+        "valor":  2.70,
+        "tags":  [
+                     "mesa",
+                     "sobremesa",
+                     "pacifico",
+                     "unidade"
+                 ]
+    },
+    {
+        "nome":  "Prato Mesa/Sob. Oitavado",
+        "categoria":  "Pratos",
+        "valor":  17.00,
+        "tags":  [
+                     "mesa",
+                     "sobremesa",
+                     "oitavado",
+                     "dezena"
+                 ]
+    },
+    {
+        "nome":  "Prato Mesa/Sob. Simples",
+        "categoria":  "Pratos",
+        "valor":  15.00,
+        "tags":  [
+                     "mesa",
+                     "sobremesa",
+                     "simples",
+                     "dezena"
+                 ]
+    },
+    {
+        "nome":  "Prato Mesa/Sob. Parma",
+        "categoria":  "Pratos",
+        "valor":  15.00,
+        "tags":  [
+                     "mesa",
+                     "sobremesa",
+                     "parma",
+                     "dezena"
+                 ]
+    },
+    {
+        "nome":  "Prato Filetado Sob.",
+        "categoria":  "Pratos",
+        "valor":  2.70,
+        "tags":  [
+                     "filetado",
+                     "sobremesa",
+                     "unidade"
+                 ]
+    },
+    {
+        "nome":  "Prato Mesa Risoto / Massa",
+        "categoria":  "Pratos",
+        "valor":  3.00,
+        "tags":  [
+                     "mesa",
+                     "risoto",
+                     "massa",
+                     "unidade"
+                 ]
+    },
+    {
+        "nome":  "Prato Fundo Oitavado",
+        "categoria":  "Pratos",
+        "valor":  20.00,
+        "tags":  [
+                     "fundo",
+                     "oitavado",
+                     "dezena"
+                 ]
+    },
+    {
+        "nome":  "Prato Sob. Cristal Ambar",
+        "categoria":  "Pratos",
+        "valor":  2.00,
+        "tags":  [
+                     "sobremesa",
+                     "cristal",
+                     "ambar",
+                     "unidade"
+                 ]
+    },
+    {
+        "nome":  "Xícara de Chá Maresia 200ml",
+        "categoria":  "Xícaras",
+        "valor":  2.20,
+        "tags":  [
+                     "chá",
+                     "maresia",
+                     "200ml",
+                     "unidade"
+                 ]
+    },
+    {
+        "nome":  "Xícara de Chá Relevo 160 ml",
+        "categoria":  "Xícaras",
+        "valor":  20.00,
+        "tags":  [
+                     "chá",
+                     "relevo",
+                     "160ml",
+                     "dezena"
+                 ]
+    },
+    {
+        "nome":  "Xícara de Chá Genova 160 ml",
+        "categoria":  "Xícaras",
+        "valor":  20.00,
+        "tags":  [
+                     "chá",
+                     "genova",
+                     "160ml",
+                     "dezena"
+                 ]
+    },
+    {
+        "nome":  "Xícara de Café Maresia 40 ml",
+        "categoria":  "Xícaras",
+        "valor":  2.00,
+        "tags":  [
+                     "café",
+                     "maresia",
+                     "40ml",
+                     "unidade"
+                 ]
+    },
+    {
+        "nome":  "Xícara de Café Relevo 40 ml",
+        "categoria":  "Xícaras",
+        "valor":  18.00,
+        "tags":  [
+                     "café",
+                     "relevo",
+                     "40ml",
+                     "dezena"
+                 ]
+    },
+    {
+        "nome":  "Xícara de Café Genova 40 ml",
+        "categoria":  "Xícaras",
+        "valor":  18.00,
+        "tags":  [
+                     "café",
+                     "genova",
+                     "40ml",
+                     "dezena"
+                 ]
+    },
+    {
+        "nome":  "Xícara de Café Feston 80 ml",
+        "categoria":  "Xícaras",
+        "valor":  16.00,
+        "tags":  [
+                     "café",
+                     "feston",
+                     "80ml",
+                     "dezena"
+                 ]
+    },
+    {
+        "nome":  "Tigela Cerâmica Azul 300 ml",
+        "categoria":  "Tigelas",
+        "valor":  1.70,
+        "tags":  [
+                     "cerâmica",
+                     "azul",
+                     "300ml",
+                     "unidade"
+                 ]
+    },
+    {
+        "nome":  "Tigela Mexicana 300 ml",
+        "categoria":  "Tigelas",
+        "valor":  1.60,
+        "tags":  [
+                     "mexicana",
+                     "300ml",
+                     "unidade"
+                 ]
+    },
+    {
+        "nome":  "Tigela lagos 250 ml",
+        "categoria":  "Tigelas",
+        "valor":  1.70,
+        "tags":  [
+                     "lagos",
+                     "250ml",
+                     "unidade"
+                 ]
+    },
+    {
+        "nome":  "Tigela Parma 300 ml",
+        "categoria":  "Tigelas",
+        "valor":  1.60,
+        "tags":  [
+                     "parma",
+                     "300ml",
+                     "unidade"
+                 ]
+    },
+    {
+        "pagina":  8,
+        "nome":  "Mesa Wave Clara (2 un)",
+        "valor":  300.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Wave",
+                     "Clara",
+                     "Par"
+                 ]
+    },
+    {
+        "pagina":  8,
+        "nome":  "Mesa Wave Verde (2 un)",
+        "valor":  340.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Wave",
+                     "Verde",
+                     "Par"
+                 ]
+    },
+    {
+        "pagina":  8,
+        "nome":  "Mesa Apoio Zuli Ripada Verde 0.90 x 0.80 1.40 (diâm. x alt.)",
+        "valor":  100.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Zuli",
+                     "Ripada",
+                     "Verde",
+                     "Apoio"
+                 ]
+    },
+    {
+        "pagina":  8,
+        "nome":  "Mesa Bistro Zuli Ripada Verde 0,42 X 0,56 (diâm. x alt.)",
+        "valor":  80.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Zuli",
+                     "Ripada",
+                     "Verde",
+                     "Bistro"
+                 ]
+    },
+    {
+        "pagina":  8,
+        "nome":  "Mesa de Centro Zuli Ripada Verde 0,80 x 0.46 m (diâm. x alt.)",
+        "valor":  90.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Zuli",
+                     "Ripada",
+                     "Verde",
+                     "Centro"
+                 ]
+    },
+    {
+        "pagina":  8,
+        "nome":  "Mesa Apoio Zuli Ripada Clara 0.90 x 0.80 1.40 (diâm. x alt.)",
+        "valor":  90.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Zuli",
+                     "Ripada",
+                     "Clara",
+                     "Apoio"
+                 ]
+    },
+    {
+        "pagina":  8,
+        "nome":  "Mesa Bistro Zuli Ripada Clara 0,42 X 0,56 (diâm. x alt.)",
+        "valor":  70.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Zuli",
+                     "Ripada",
+                     "Clara",
+                     "Bistro"
+                 ]
+    },
+    {
+        "pagina":  8,
+        "nome":  "Mesa de Centro Zuli Ripada Clara 0,80 x 0.46 m (diâm. x alt.)",
+        "valor":  80.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Zuli",
+                     "Ripada",
+                     "Clara",
+                     "Centro"
+                 ]
+    },
+    {
+        "pagina":  9,
+        "nome":  "Mesa Sofia 1.40 Diametro Base Marron",
+        "valor":  110.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Sofia",
+                     "Marrom",
+                     "Redonda"
+                 ]
+    },
+    {
+        "pagina":  9,
+        "nome":  "Mesa Sofia Tampo 1,40 diâmetro Base Ferro Preta",
+        "valor":  150.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Sofia",
+                     "Ferro",
+                     "Preta",
+                     "Redonda"
+                 ]
+    },
+    {
+        "pagina":  9,
+        "nome":  "Tampo Sofia Base Marron Retangular 2,00 1,00",
+        "valor":  115.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Sofia",
+                     "Marrom",
+                     "Retangular"
+                 ]
+    },
+    {
+        "pagina":  9,
+        "nome":  "Tampo Sofia Base Marron Retangular 1.50 x 0.80",
+        "valor":  75.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Sofia",
+                     "Marrom",
+                     "Retangular"
+                 ]
+    },
+    {
+        "pagina":  9,
+        "nome":  "Mesa Sofia 2,50 x 1,10 m Base Ferro Preto",
+        "valor":  300.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Sofia",
+                     "Ferro",
+                     "Preta",
+                     "Retangular"
+                 ]
+    },
+    {
+        "pagina":  9,
+        "nome":  "Mesa Sofia Base Ferro 3 Curvas (Par) 1,60 X 0,77 m",
+        "valor":  85.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Sofia",
+                     "Ferro",
+                     "3 Curvas",
+                     "Par"
+                 ]
+    },
+    {
+        "pagina":  9,
+        "nome":  "Mesa Sofia Base Ferro 3 Curvas (Par) 1,80 X 0,65 m",
+        "valor":  100.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Sofia",
+                     "Ferro",
+                     "3 Curvas",
+                     "Par"
+                 ]
+    },
+    {
+        "pagina":  9,
+        "nome":  "Mesa Sofia Base Ferro 3 Curvas (Par) 1,90 X 0,80 m",
+        "valor":  105.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Sofia",
+                     "Ferro",
+                     "3 Curvas",
+                     "Par"
+                 ]
+    },
+    {
+        "pagina":  9,
+        "nome":  "Mesa Pé Ampulheta - Madeira Demolição 3,00 x 1,00 m",
+        "valor":  200.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Demolição",
+                     "Ampulheta",
+                     "Madeira"
+                 ]
+    },
+    {
+        "pagina":  9,
+        "nome":  "Mesa Pé Ampulheta - Madeira Demolição 2,00 X 0.80 m",
+        "valor":  170.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Demolição",
+                     "Ampulheta",
+                     "Madeira"
+                 ]
+    },
+    {
+        "pagina":  9,
+        "nome":  "Mesa Sofia Pé X Metal Envelhecido 2.00 X 1.00 m",
+        "valor":  130.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Sofia",
+                     "Metal",
+                     "Envelhecido",
+                     "Pé X"
+                 ]
+    },
+    {
+        "pagina":  9,
+        "nome":  "Mesa Sofia Pé X Metal Envelhecido 1,80 X 0.65 m",
+        "valor":  120.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Sofia",
+                     "Metal",
+                     "Envelhecido",
+                     "Pé X"
+                 ]
+    },
+    {
+        "pagina":  9,
+        "nome":  "Tampo Demolição Base Ferro Trançado (Par) 3.00 X 1.00 m",
+        "valor":  180.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Demolição",
+                     "Ferro",
+                     "Trançado",
+                     "Par"
+                 ]
+    },
+    {
+        "pagina":  9,
+        "nome":  "Mesa Sofia Base Ferro Trançado (Par) 2.00 X 1.00 m",
+        "valor":  130.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Sofia",
+                     "Ferro",
+                     "Trançado",
+                     "Par"
+                 ]
+    },
+    {
+        "pagina":  9,
+        "nome":  "Mesa Sofia Base Ferro Trançado (Par) 1,85 X 0.70 m",
+        "valor":  120.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "Sofia",
+                     "Ferro",
+                     "Trançado",
+                     "Par"
+                 ]
+    },
+    {
+        "pagina":  10,
+        "nome":  "Mesa Demolição Base Leque 2,00 X 0.80 m",
+        "valor":  160.0,
+        "categoria":  "Mesas e Bases",
+        "tags":  [
+                     "Demolição",
+                     "Leque"
+                 ]
+    },
+    {
+        "pagina":  10,
+        "nome":  "Base Leque Sofia (PAR)",
+        "valor":  70.0,
+        "categoria":  "Mesas e Bases",
+        "tags":  [
+                     "Sofia",
+                     "Leque",
+                     "Base",
+                     "Par"
+                 ]
+    },
+    {
+        "pagina":  10,
+        "nome":  "Mesa Demolição Pé trançado Envelhecido - 3.00 x 1.00 m",
+        "valor":  220.0,
+        "categoria":  "Mesas e Bases",
+        "tags":  [
+                     "Demolição",
+                     "Trançado",
+                     "Envelhecido"
+                 ]
+    },
+    {
+        "pagina":  10,
+        "nome":  "Mesa Demolição Pé trançado Envelhecido - 2.00 X 1.00 m",
+        "valor":  190.0,
+        "categoria":  "Mesas e Bases",
+        "tags":  [
+                     "Demolição",
+                     "Trançado",
+                     "Envelhecido"
+                 ]
+    },
+    {
+        "pagina":  10,
+        "nome":  "Mesa Sofia Base Leque 2.00 x 1,00 m",
+        "valor":  150.0,
+        "categoria":  "Mesas e Bases",
+        "tags":  [
+                     "Sofia",
+                     "Leque"
+                 ]
+    },
+    {
+        "pagina":  10,
+        "nome":  "Mesa Sofia Base Leque 0,85 x 0,70 m",
+        "valor":  140.0,
+        "categoria":  "Mesas e Bases",
+        "tags":  [
+                     "Sofia",
+                     "Leque"
+                 ]
+    },
+    {
+        "pagina":  10,
+        "nome":  "Base leque Mel (PAR)",
+        "valor":  70.0,
+        "categoria":  "Mesas e Bases",
+        "tags":  [
+                     "Mel",
+                     "Leque",
+                     "Base",
+                     "Par"
+                 ]
+    },
+    {
+        "pagina":  10,
+        "nome":  "Mesa Laca Preta 2.00 x 1,00",
+        "valor":  250.0,
+        "categoria":  "Mesas e Bases",
+        "tags":  [
+                     "Laca",
+                     "Preta"
+                 ]
+    },
+    {
+        "pagina":  10,
+        "nome":  "Mesa Laca Dourada 2.70 x 1.10 m",
+        "valor":  280.0,
+        "categoria":  "Mesas e Bases",
+        "tags":  [
+                     "Laca",
+                     "Dourada"
+                 ]
+    },
+    {
+        "pagina":  10,
+        "nome":  "Tampo Espelhado 1,20 x 1,20 Base Ampulheta Espelhada 0,60 x 0,60",
+        "valor":  230.0,
+        "categoria":  "Mesas e Bases",
+        "tags":  [
+                     "Espelhado",
+                     "Ampulheta"
+                 ]
+    },
+    {
+        "pagina":  10,
+        "nome":  "Tampo de Mesa em MDF para Cavalete 1.10 diâmetro",
+        "valor":  14.0,
+        "categoria":  "Mesas e Bases",
+        "tags":  [
+                     "MDF",
+                     "Cavalete",
+                     "Tampo"
+                 ]
+    },
+    {
+        "pagina":  10,
+        "nome":  "Tampo de Mesa em MDF para Cavalete 1.20 diâmetro",
+        "valor":  15.0,
+        "categoria":  "Mesas e Bases",
+        "tags":  [
+                     "MDF",
+                     "Cavalete",
+                     "Tampo"
+                 ]
+    },
+    {
+        "pagina":  10,
+        "nome":  "Tampo de Mesa em MDF para Cavalete 1.40 diâmetro",
+        "valor":  18.0,
+        "categoria":  "Mesas e Bases",
+        "tags":  [
+                     "MDF",
+                     "Cavalete",
+                     "Tampo"
+                 ]
+    },
+    {
+        "pagina":  10,
+        "nome":  "Tampo Formica 2,25 X 0.90 / Cavalete",
+        "valor":  28.0,
+        "categoria":  "Mesas e Bases",
+        "tags":  [
+                     "Formica",
+                     "Cavalete",
+                     "Tampo"
+                 ]
+    },
+    {
+        "pagina":  10,
+        "nome":  "Tampo MDF 2.20 X 0.80",
+        "valor":  22.0,
+        "categoria":  "Mesas e Bases",
+        "tags":  [
+                     "MDF",
+                     "Tampo"
+                 ]
+    },
+    {
+        "pagina":  11,
+        "nome":  "Mesa Sofia 0.90 diâmetro",
+        "valor":  60.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "sofia",
+                     "madeira",
+                     "redonda",
+                     "clássica"
+                 ]
+    },
+    {
+        "pagina":  11,
+        "nome":  "Mesa Madeira Demolição base Demolição 1.10 Diâmetro",
+        "valor":  120.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "madeira",
+                     "demolição",
+                     "redonda",
+                     "rústica"
+                 ]
+    },
+    {
+        "pagina":  11,
+        "nome":  "Mesa Vidro 1.20 Diâmetro Base Dourada",
+        "valor":  110.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "vidro",
+                     "dourada",
+                     "redonda",
+                     "luxo"
+                 ]
+    },
+    {
+        "pagina":  11,
+        "nome":  "Mesa Kids 0,60 X 0,46",
+        "valor":  30.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "kids",
+                     "infantil",
+                     "pequena",
+                     "branca"
+                 ]
+    },
+    {
+        "pagina":  11,
+        "nome":  "KIT Mesa Kids + 4 cadeiras",
+        "valor":  66.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "kids",
+                     "infantil",
+                     "kit",
+                     "cadeiras",
+                     "eames"
+                 ]
+    },
+    {
+        "pagina":  11,
+        "nome":  "Mesa Garden",
+        "valor":  40.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "garden",
+                     "jardim",
+                     "madeira",
+                     "ferro"
+                 ]
+    },
+    {
+        "pagina":  11,
+        "nome":  "Mesa Plástica Goyana 0,70 x 0,70",
+        "valor":  12.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "plástica",
+                     "goyana",
+                     "branca",
+                     "quadrada"
+                 ]
+    },
+    {
+        "pagina":  11,
+        "nome":  "Mesa Retangular / quadradas Descontruídas",
+        "valor":  115.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "retangular",
+                     "quadrada",
+                     "desconstruída",
+                     "estilo industrial"
+                 ]
+    },
+    {
+        "pagina":  11,
+        "nome":  "Mesas Redondas Desconstruidas",
+        "valor":  90.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "redonda",
+                     "desconstruída",
+                     "ferro",
+                     "madeira"
+                 ]
+    },
+    {
+        "pagina":  12,
+        "nome":  "Console Ferro Preto C/2 VIDROS - 1.40x 0,50x 0,87 alt.",
+        "valor":  90.0,
+        "categoria":  "Consoles",
+        "tags":  [
+                     "ferro",
+                     "preto",
+                     "vidro",
+                     "moderno"
+                 ]
+    },
+    {
+        "pagina":  12,
+        "nome":  "Console de Ferro Tampo Madeira Café 1,25 X 0,45 X 0,80 alt.",
+        "valor":  80.0,
+        "categoria":  "Consoles",
+        "tags":  [
+                     "ferro",
+                     "madeira",
+                     "café",
+                     "rústico"
+                 ]
+    },
+    {
+        "pagina":  12,
+        "nome":  "Console De Ferro Tampo Vidro 1,25 X 0,45 X 0,80 alt.",
+        "valor":  80.0,
+        "categoria":  "Consoles",
+        "tags":  [
+                     "ferro",
+                     "vidro",
+                     "minimalista"
+                 ]
+    },
+    {
+        "pagina":  12,
+        "nome":  "CONSOLE DE MADEIRA C/ 2 GAVETAS 1.50 X 0.40 X 0.80 alt.",
+        "valor":  90.0,
+        "categoria":  "Consoles",
+        "tags":  [
+                     "madeira",
+                     "gavetas",
+                     "clássico"
+                 ]
+    },
+    {
+        "pagina":  12,
+        "nome":  "Mesa Bolacha",
+        "valor":  110.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "bolacha",
+                     "tronco",
+                     "madeira",
+                     "orgânico"
+                 ]
+    },
+    {
+        "pagina":  12,
+        "nome":  "Genuflexório",
+        "valor":  90.0,
+        "categoria":  "Diversos",
+        "tags":  [
+                     "genuflexório",
+                     "estofado",
+                     "vermelho",
+                     "cerimônia"
+                 ]
+    },
+    {
+        "pagina":  12,
+        "nome":  "Ombrelone Bahamas 3.20 diâmetro",
+        "valor":  140.0,
+        "categoria":  "Ombrelones",
+        "tags":  [
+                     "bahamas",
+                     "grande",
+                     "proteção solar",
+                     "outdoor"
+                 ]
+    },
+    {
+        "pagina":  12,
+        "nome":  "Ombrelone Cor Café 3.00 diâmetro",
+        "valor":  120.0,
+        "categoria":  "Ombrelones",
+        "tags":  [
+                     "café",
+                     "proteção solar",
+                     "outdoor"
+                 ]
+    },
+    {
+        "pagina":  12,
+        "nome":  "Barraquinha Madeira Clara",
+        "valor":  130.0,
+        "categoria":  "Diversos",
+        "tags":  [
+                     "barraquinha",
+                     "madeira",
+                     "clara",
+                     "eventos"
+                 ]
+    },
+    {
+        "pagina":  13,
+        "nome":  "Mesa Lateral Ferro Preto Tampo Madeira 0,70 diâmetro",
+        "valor":  60.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "lateral",
+                     "ferro",
+                     "madeira",
+                     "redonda"
+                 ]
+    },
+    {
+        "pagina":  13,
+        "nome":  "Mesa Lateral Base Ferro Marron Tampo Sofia 0.60 diâmetro",
+        "valor":  50.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "lateral",
+                     "ferro",
+                     "marrom",
+                     "sofia"
+                 ]
+    },
+    {
+        "pagina":  13,
+        "nome":  "Mesa Lateral Base Ferro Marron Tampo Sofia 0.60 diâmetro",
+        "valor":  50.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "lateral",
+                     "ferro",
+                     "marrom",
+                     "sofia"
+                 ]
+    },
+    {
+        "pagina":  13,
+        "nome":  "Tampo Madeira Sofia Base Ferro",
+        "valor":  50.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "sofia",
+                     "madeira",
+                     "ferro",
+                     "simples"
+                 ]
+    },
+    {
+        "pagina":  13,
+        "nome":  "Mesa Tampo Marron com rodas 1.50 x 0.80",
+        "valor":  160.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "marrom",
+                     "rodas",
+                     "industrial",
+                     "móvel"
+                 ]
+    },
+    {
+        "pagina":  13,
+        "nome":  "Carrinho Madeira Sofia",
+        "valor":  120.0,
+        "categoria":  "Diversos",
+        "tags":  [
+                     "carrinho",
+                     "madeira",
+                     "sofia",
+                     "rodas",
+                     "serviço"
+                 ]
+    },
+    {
+        "pagina":  13,
+        "nome":  "Mesa Centro Ferro Dourada C/ Vidros 1.40 x 0,70 x 0,45",
+        "valor":  80.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "centro",
+                     "ferro",
+                     "dourada",
+                     "vidro",
+                     "elegante"
+                 ]
+    },
+    {
+        "pagina":  13,
+        "nome":  "Mesa Lateral Ferro Dourado Com Vidros 60 x 60 x 45",
+        "valor":  50.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "lateral",
+                     "ferro",
+                     "dourado",
+                     "vidro",
+                     "quadrada"
+                 ]
+    },
+    {
+        "pagina":  13,
+        "nome":  "Mesa Redonda Dourada pé Abacaxi Vidro 0,70 diâmetro",
+        "valor":  80.0,
+        "categoria":  "Mesas",
+        "tags":  [
+                     "redonda",
+                     "dourada",
+                     "abacaxi",
+                     "vidro",
+                     "decorativa"
+                 ]
+    },
+    {
+        "pagina":  14,
+        "nome":  "Mesa Long Drink Tampo Demolição 0.70 x 0,70",
+        "valor":  66,
+        "categoria":  "Mesa",
+        "tags":  [
+                     "Long Drink",
+                     "Demolição",
+                     "Madeira"
+                 ]
+    },
+    {
+        "pagina":  14,
+        "nome":  "Mesa Long Drink Tampo Sofia 0,70 x 0,70",
+        "valor":  66,
+        "categoria":  "Mesa",
+        "tags":  [
+                     "Long Drink",
+                     "Sofia"
+                 ]
+    },
+    {
+        "pagina":  14,
+        "nome":  "KIT Long Drink Pé inox Tampo Madeira Preta 0.60 diâmetro Tampo Madeira Café 0.60 diâmetro",
+        "valor":  130,
+        "categoria":  "Kit",
+        "tags":  [
+                     "Long Drink",
+                     "Pé inox",
+                     "Madeira"
+                 ]
+    },
+    {
+        "pagina":  14,
+        "nome":  "Kit Long Drink Pé Trançado Tampo Sofia 0.70 x 0.70 - 4 banquetas (Branco)",
+        "valor":  130,
+        "categoria":  "Kit",
+        "tags":  [
+                     "Long Drink",
+                     "Pé Trançado",
+                     "Sofia",
+                     "Banquetas"
+                 ]
+    },
+    {
+        "pagina":  14,
+        "nome":  "Kit Long Drink Pé Trançado Tampo Sofia 0.70 x 0.70 - 4 banquetas (Preto)",
+        "valor":  130,
+        "categoria":  "Kit",
+        "tags":  [
+                     "Long Drink",
+                     "Pé Trançado",
+                     "Sofia",
+                     "Banquetas"
+                 ]
+    },
+    {
+        "pagina":  14,
+        "nome":  "Pé X Inox Tampo Vidro 1.20 diâmetro",
+        "valor":  120,
+        "categoria":  "Mesa",
+        "tags":  [
+                     "Inox",
+                     "Vidro"
+                 ]
+    },
+    {
+        "pagina":  14,
+        "nome":  "Pé X Metal Envelhecido Tampo Vidro 1.20 diâmetro",
+        "valor":  120,
+        "categoria":  "Mesa",
+        "tags":  [
+                     "Metal",
+                     "Envelhecido",
+                     "Vidro"
+                 ]
+    },
+    {
+        "pagina":  14,
+        "nome":  "Mesa Boate Dourada Tampo Vidro",
+        "valor":  50,
+        "categoria":  "Mesa",
+        "tags":  [
+                     "Boate",
+                     "Dourada",
+                     "Vidro"
+                 ]
+    },
+    {
+        "pagina":  15,
+        "nome":  "CJ Boate vidro / madeira c/ Banquethas",
+        "valor":  90,
+        "categoria":  "Conjunto",
+        "tags":  [
+                     "Boate",
+                     "Vidro",
+                     "Madeira",
+                     "Banquetas"
+                 ]
+    },
+    {
+        "pagina":  15,
+        "nome":  "Banqueta Boate Branca / Preta",
+        "valor":  10,
+        "categoria":  "Banqueta",
+        "tags":  [
+                     "Boate",
+                     "Branca",
+                     "Preta"
+                 ]
+    },
+    {
+        "pagina":  15,
+        "nome":  "CJ Boate Madeira c/ Puffs",
+        "valor":  90,
+        "categoria":  "Conjunto",
+        "tags":  [
+                     "Boate",
+                     "Madeira",
+                     "Puffs"
+                 ]
+    },
+    {
+        "pagina":  15,
+        "nome":  "Puff Ferro Preto Almofada Marron",
+        "valor":  10,
+        "categoria":  "Puff",
+        "tags":  [
+                     "Ferro",
+                     "Preto",
+                     "Almofada Marrom"
+                 ]
+    },
+    {
+        "pagina":  15,
+        "nome":  "Puff Retangular Branco 0,98 x 0,60",
+        "valor":  50,
+        "categoria":  "Puff",
+        "tags":  [
+                     "Retangular",
+                     "Branco"
+                 ]
+    },
+    {
+        "pagina":  15,
+        "nome":  "Puff Retangular Preto 0,98 x 0,60",
+        "valor":  50,
+        "categoria":  "Puff",
+        "tags":  [
+                     "Retangular",
+                     "Preto"
+                 ]
+    },
+    {
+        "pagina":  15,
+        "nome":  "Puff Retangular Marron 0,98 X 0,60",
+        "valor":  50,
+        "categoria":  "Puff",
+        "tags":  [
+                     "Retangular",
+                     "Marrom"
+                 ]
+    },
+    {
+        "pagina":  15,
+        "nome":  "Sofá Preto Sem Braço",
+        "valor":  80,
+        "categoria":  "Sofá",
+        "tags":  [
+                     "Preto",
+                     "Sem Braço"
+                 ]
+    },
+    {
+        "pagina":  15,
+        "nome":  "Sofá Preto",
+        "valor":  80,
+        "categoria":  "Sofá",
+        "tags":  [
+                     "Preto"
+                 ]
+    },
+    {
+        "pagina":  15,
+        "nome":  "Sofá Rio",
+        "valor":  350,
+        "categoria":  "Sofá",
+        "tags":  [
+                     "Rio",
+                     "Estofado"
+                 ]
+    },
+    {
+        "pagina":  16,
+        "nome":  "BAR FERRO Envelhecido 1,50x 60 x 1,07 alt.",
+        "valor":  150,
+        "categoria":  "Bar",
+        "tags":  [
+                     "Ferro",
+                     "Envelhecido",
+                     "Móvel"
+                 ]
+    },
+    {
+        "pagina":  16,
+        "nome":  "Bar Madeira Clara 1,50 x 0,50 x 1,05 alt.",
+        "valor":  140,
+        "categoria":  "Bar",
+        "tags":  [
+                     "Madeira Clara",
+                     "Móvel"
+                 ]
+    },
+    {
+        "pagina":  16,
+        "nome":  "Armário Verde Baixo",
+        "valor":  70,
+        "categoria":  "Armário",
+        "tags":  [
+                     "Verde",
+                     "Baixo",
+                     "Móvel"
+                 ]
+    },
+    {
+        "pagina":  16,
+        "nome":  "Estante Ferro 0,80 x 0,30 x 1,70 alt.",
+        "valor":  140,
+        "categoria":  "Estante",
+        "tags":  [
+                     "Ferro",
+                     "Móvel"
+                 ]
+    },
+    {
+        "pagina":  16,
+        "nome":  "Estante Madeira 2,10X 0,80",
+        "valor":  140,
+        "categoria":  "Estante",
+        "tags":  [
+                     "Madeira",
+                     "Móvel"
+                 ]
+    },
+    {
+        "pagina":  16,
+        "nome":  "Estante de Madeira Portas de vidro 1,00 x 0,40 x 1,85 alt",
+        "valor":  160,
+        "categoria":  "Estante",
+        "tags":  [
+                     "Madeira",
+                     "Vidro",
+                     "Móvel"
+                 ]
+    },
+    {
+        "pagina":  16,
+        "nome":  "Bancada Madeira Clara 2.50 x 0.45 x 1.05 alt.",
+        "valor":  120,
+        "categoria":  "Bancada",
+        "tags":  [
+                     "Madeira Clara",
+                     "Móvel"
+                 ]
+    },
+    {
+        "pagina":  16,
+        "nome":  "Banco Demolição 1,80 x 0,44",
+        "valor":  80,
+        "categoria":  "Banco",
+        "tags":  [
+                     "Demolição",
+                     "Madeira",
+                     "Móvel"
+                 ]
+    },
+    {
+        "pagina":  17,
+        "nome":  "Sousplat Cristal Ámbar",
+        "valor":  4.5,
+        "categoria":  "Sousplat",
+        "tags":  [
+                     "cristal",
+                     "âmbar",
+                     "mesa posta",
+                     "decoração"
+                 ]
+    },
+    {
+        "pagina":  17,
+        "nome":  "Sousplat Pérola",
+        "valor":  3.5,
+        "categoria":  "Sousplat",
+        "tags":  [
+                     "pérola",
+                     "mesa posta",
+                     "decoração"
+                 ]
+    },
+    {
+        "pagina":  17,
+        "nome":  "Sousplat Vime",
+        "valor":  3.5,
+        "categoria":  "Sousplat",
+        "tags":  [
+                     "vime",
+                     "rústico",
+                     "mesa posta",
+                     "decoração"
+                 ]
+    },
+    {
+        "pagina":  17,
+        "nome":  "Sousplat Borda Ondulada",
+        "valor":  3.5,
+        "categoria":  "Sousplat",
+        "tags":  [
+                     "borda ondulada",
+                     "mesa posta",
+                     "decoração"
+                 ]
+    },
+    {
+        "pagina":  17,
+        "nome":  "Jogo Americano",
+        "valor":  3.0,
+        "categoria":  "Jogo Americano",
+        "tags":  [
+                     "tecido",
+                     "mesa posta",
+                     "decoração"
+                 ]
+    },
+    {
+        "pagina":  17,
+        "nome":  "Guardanapo",
+        "valor":  null,
+        "categoria":  "Guardanapo",
+        "tags":  [
+                     "tecido",
+                     "mesa posta",
+                     "decoração"
+                 ]
+    },
+    {
+        "pagina":  17,
+        "nome":  "Toalhas Banquetes (Retangulares) 4,00 X 2,40",
+        "valor":  29.0,
+        "categoria":  "Toalha",
+        "tags":  [
+                     "retangular",
+                     "banquete",
+                     "grande",
+                     "tecido"
+                 ]
+    },
+    {
+        "pagina":  17,
+        "nome":  "Toalhas Aparadores de Linho (Redonda) 3,00 m diâmetro",
+        "valor":  18.0,
+        "categoria":  "Toalha",
+        "tags":  [
+                     "linho",
+                     "redonda",
+                     "aparador",
+                     "tecido"
+                 ]
+    },
+    {
+        "pagina":  17,
+        "nome":  "Toalhas Aparadores Adamascada (Redonda) 2,80 m diâmetro",
+        "valor":  17.0,
+        "categoria":  "Toalha",
+        "tags":  [
+                     "adamascada",
+                     "redonda",
+                     "aparador",
+                     "tecido"
+                 ]
+    },
+    {
+        "pagina":  17,
+        "nome":  "Toalhas 1,50 x 1,50",
+        "valor":  9.0,
+        "categoria":  "Toalha",
+        "tags":  [
+                     "quadrada",
+                     "tecido"
+                 ]
+    },
+    {
+        "pagina":  18,
+        "nome":  "Bolacha Suporte 40 cm - 5 repartições",
+        "valor":  33.0,
+        "categoria":  "Suporte de Madeira",
+        "tags":  [
+                     "bolacha",
+                     "madeira",
+                     "rústico",
+                     "repartições"
+                 ]
+    },
+    {
+        "pagina":  18,
+        "nome":  "Bolacha Suporte de Madeira 3 Partes Baixa",
+        "valor":  33.0,
+        "categoria":  "Suporte de Madeira",
+        "tags":  [
+                     "bolacha",
+                     "madeira",
+                     "rústico",
+                     "3 partes",
+                     "baixa"
+                 ]
+    },
+    {
+        "pagina":  18,
+        "nome":  "Bolacha Suporte de Madeira 3 Partes Alta",
+        "valor":  33.0,
+        "categoria":  "Suporte de Madeira",
+        "tags":  [
+                     "bolacha",
+                     "madeira",
+                     "rústico",
+                     "3 partes",
+                     "alta"
+                 ]
+    },
+    {
+        "pagina":  18,
+        "nome":  "Doceira / Bandeja de Madeira Oval Grande 0,42 X 0,25 cm",
+        "valor":  26.0,
+        "categoria":  "Doceira",
+        "tags":  [
+                     "madeira",
+                     "oval",
+                     "grande",
+                     "bandeja"
+                 ]
+    },
+    {
+        "pagina":  18,
+        "nome":  "Doceira / Bandeja de Madeira Oval Pequena 0,36 x 0,20 cm",
+        "valor":  26.0,
+        "categoria":  "Doceira",
+        "tags":  [
+                     "madeira",
+                     "oval",
+                     "pequena",
+                     "bandeja"
+                 ]
+    },
+    {
+        "pagina":  18,
+        "nome":  "Doceira / Bandeja Madeira Redonda 30 cm",
+        "valor":  26.0,
+        "categoria":  "Doceira",
+        "tags":  [
+                     "madeira",
+                     "redonda",
+                     "bandeja"
+                 ]
+    },
+    {
+        "pagina":  18,
+        "nome":  "Suporte de Ferro Preto Madeira 3 Partes",
+        "valor":  33.0,
+        "categoria":  "Suporte",
+        "tags":  [
+                     "ferro preto",
+                     "madeira",
+                     "3 partes",
+                     "rústico"
+                 ]
+    },
+    {
+        "pagina":  18,
+        "nome":  "Doceira / Bolacha Madeira Pé Tronco",
+        "valor":  27.0,
+        "categoria":  "Doceira",
+        "tags":  [
+                     "madeira",
+                     "pé tronco",
+                     "bolacha",
+                     "rústico"
+                 ]
+    },
+    {
+        "pagina":  18,
+        "nome":  "Tronco de Madeira 40 x 11 cm",
+        "valor":  23.0,
+        "categoria":  "Suporte de Madeira",
+        "tags":  [
+                     "tronco",
+                     "madeira",
+                     "rústico"
+                 ]
+    },
+    {
+        "pagina":  18,
+        "nome":  "Doceira Bandeja Madeira Retangular Ondulada 0,62 x 0,12 cm",
+        "valor":  23.0,
+        "categoria":  "Doceira",
+        "tags":  [
+                     "madeira",
+                     "retangular",
+                     "ondulada",
+                     "bandeja"
+                 ]
+    },
+    {
+        "pagina":  19,
+        "nome":  "Bolacha 30 cm Alta Armação Ferro Preta",
+        "valor":  27.0,
+        "categoria":  "Suporte de Madeira",
+        "tags":  [
+                     "bolacha",
+                     "madeira",
+                     "ferro preto",
+                     "alta"
+                 ]
+    },
+    {
+        "pagina":  19,
+        "nome":  "Bolacha 30 cm Baixa Armação Ferro Preto",
+        "valor":  27.0,
+        "categoria":  "Suporte de Madeira",
+        "tags":  [
+                     "bolacha",
+                     "madeira",
+                     "ferro preto",
+                     "baixa"
+                 ]
+    },
+    {
+        "pagina":  19,
+        "nome":  "Bolacha 30 cm Armação Circular Ferro Preto",
+        "valor":  27.0,
+        "categoria":  "Suporte de Madeira",
+        "tags":  [
+                     "bolacha",
+                     "madeira",
+                     "ferro preto",
+                     "circular"
+                 ]
+    },
+    {
+        "pagina":  19,
+        "nome":  "Suporte Curto Fundo Com Pé Madeira Clara",
+        "valor":  33.0,
+        "categoria":  "Suporte de Madeira",
+        "tags":  [
+                     "suporte",
+                     "madeira clara",
+                     "curto",
+                     "rústico"
+                 ]
+    },
+    {
+        "pagina":  19,
+        "nome":  "Suporte de Madeira Longa Base Madeira",
+        "valor":  33.0,
+        "categoria":  "Suporte de Madeira",
+        "tags":  [
+                     "suporte",
+                     "madeira",
+                     "longo",
+                     "rústico"
+                 ]
+    },
+    {
+        "pagina":  19,
+        "nome":  "Bolacha Retangular Pé Alto 0,65 x 0,25 cm",
+        "valor":  28.0,
+        "categoria":  "Suporte de Madeira",
+        "tags":  [
+                     "bolacha",
+                     "retangular",
+                     "madeira",
+                     "pé alto"
+                 ]
+    },
+    {
+        "pagina":  19,
+        "nome":  "Bolacha Retangular Pé Baixa 0,60 x 0,20 cm",
+        "valor":  28.0,
+        "categoria":  "Suporte de Madeira",
+        "tags":  [
+                     "bolacha",
+                     "retangular",
+                     "madeira",
+                     "pé baixo"
+                 ]
+    },
+    {
+        "pagina":  19,
+        "nome":  "Bolacha Redonda 38 cm",
+        "valor":  25.0,
+        "categoria":  "Suporte de Madeira",
+        "tags":  [
+                     "bolacha",
+                     "redonda",
+                     "madeira",
+                     "rústico"
+                 ]
+    },
+    {
+        "pagina":  19,
+        "nome":  "Tronco de Madeira Com Vidro",
+        "valor":  26.0,
+        "categoria":  "Suporte de Madeira",
+        "tags":  [
+                     "tronco",
+                     "madeira",
+                     "vidro",
+                     "rústico"
+                 ]
+    },
+    {
+        "pagina":  20,
+        "nome":  "Caçarola de Barro - Feijoada 3 l",
+        "valor":  27.0,
+        "categoria":  "Utensílios de Barro",
+        "tags":  [
+                     "caçarola",
+                     "barro",
+                     "feijoada",
+                     "3l",
+                     "rechaud não incluído"
+                 ]
+    },
+    {
+        "pagina":  20,
+        "nome":  "Caçarola de Barro 7 l",
+        "valor":  32.0,
+        "categoria":  "Utensílios de Barro",
+        "tags":  [
+                     "caçarola",
+                     "barro",
+                     "7l",
+                     "rechaud não incluído"
+                 ]
+    },
+    {
+        "pagina":  20,
+        "nome":  "Caçarola de Barro 10 l",
+        "valor":  33.0,
+        "categoria":  "Utensílios de Barro",
+        "tags":  [
+                     "caçarola",
+                     "barro",
+                     "10l",
+                     "rechaud não incluído"
+                 ]
+    },
+    {
+        "pagina":  20,
+        "nome":  "Caçarola de Barro 5 l",
+        "valor":  30.0,
+        "categoria":  "Utensílios de Barro",
+        "tags":  [
+                     "caçarola",
+                     "barro",
+                     "5l",
+                     "rechaud não incluído"
+                 ]
+    },
+    {
+        "pagina":  20,
+        "nome":  "Caçarola de Barro 3 l",
+        "valor":  27.0,
+        "categoria":  "Utensílios de Barro",
+        "tags":  [
+                     "caçarola",
+                     "barro",
+                     "3l",
+                     "rechaud não incluído"
+                 ]
+    },
+    {
+        "pagina":  20,
+        "nome":  "Assadeira Barro Retangular (Feijoada) 40 x 23 cm",
+        "valor":  25.0,
+        "categoria":  "Utensílios de Barro",
+        "tags":  [
+                     "assadeira",
+                     "barro",
+                     "retangular",
+                     "feijoada"
+                 ]
+    },
+    {
+        "pagina":  20,
+        "nome":  "Travessinha Barro 30 x 16",
+        "valor":  10.0,
+        "categoria":  "Utensílios de Barro",
+        "tags":  [
+                     "travessinha",
+                     "barro"
+                 ]
+    },
+    {
+        "pagina":  20,
+        "nome":  "Travessinha Barro 25 x 15",
+        "valor":  10.0,
+        "categoria":  "Utensílios de Barro",
+        "tags":  [
+                     "travessinha",
+                     "barro"
+                 ]
+    },
+    {
+        "pagina":  20,
+        "nome":  "Cumbuca Barro 320 ml",
+        "valor":  10.0,
+        "categoria":  "Utensílios de Barro",
+        "tags":  [
+                     "cumbuca",
+                     "barro"
+                 ]
+    },
+    {
+        "pagina":  20,
+        "nome":  "Rechaud Ferro Preto",
+        "valor":  15.0,
+        "categoria":  "Utensílios de Ferro",
+        "tags":  [
+                     "rechaud",
+                     "ferro",
+                     "preto"
+                 ]
+    },
+    {
+        "pagina":  20,
+        "nome":  "Travessa Barro 7 LTS",
+        "valor":  0,
+        "categoria":  "Utensílios de Barro",
+        "tags":  [
+                     "travessa",
+                     "barro",
+                     "7l"
+                 ]
+    },
+    {
+        "pagina":  20,
+        "nome":  "Caçarola de Barro Branca 10 l",
+        "valor":  33.0,
+        "categoria":  "Utensílios de Barro",
+        "tags":  [
+                     "caçarola",
+                     "barro",
+                     "branca",
+                     "10l"
+                 ]
+    },
+    {
+        "pagina":  20,
+        "nome":  "Caçarola de Barro Branca 7 l",
+        "valor":  32.0,
+        "categoria":  "Utensílios de Barro",
+        "tags":  [
+                     "caçarola",
+                     "barro",
+                     "branca",
+                     "7l"
+                 ]
+    },
+    {
+        "pagina":  20,
+        "nome":  "Assadeira Porcelana Branca Funda 38 x 26",
+        "valor":  0,
+        "categoria":  "Porcelana",
+        "tags":  [
+                     "assadeira",
+                     "porcelana",
+                     "branca",
+                     "funda"
+                 ]
+    },
+    {
+        "pagina":  20,
+        "nome":  "Assadeira Porcelana Branca Rasa 46 x 33",
+        "valor":  0,
+        "categoria":  "Porcelana",
+        "tags":  [
+                     "assadeira",
+                     "porcelana",
+                     "branca",
+                     "rasa"
+                 ]
+    },
+    {
+        "pagina":  20,
+        "nome":  "Saladeira de Cerâmica Verde 40 cm",
+        "valor":  40.0,
+        "categoria":  "Cerâmica",
+        "tags":  [
+                     "saladeira",
+                     "cerâmica",
+                     "verde",
+                     "suporte dourado"
+                 ]
+    },
+    {
+        "pagina":  20,
+        "nome":  "Carrinho Madeira Sofia",
+        "valor":  120.0,
+        "categoria":  "Mobiliário",
+        "tags":  [
+                     "carrinho",
+                     "madeira",
+                     "sofia",
+                     "expositor"
+                 ]
+    },
+    {
+        "pagina":  21,
+        "nome":  "Suqueira Cristal 5 lts",
+        "valor":  45.0,
+        "categoria":  "Cristalaria",
+        "tags":  [
+                     "suqueira",
+                     "cristal",
+                     "5l"
+                 ]
+    },
+    {
+        "pagina":  21,
+        "nome":  "Suqueira Cristal 2 l",
+        "valor":  35.0,
+        "categoria":  "Cristalaria",
+        "tags":  [
+                     "suqueira",
+                     "cristal",
+                     "2l"
+                 ]
+    },
+    {
+        "pagina":  21,
+        "nome":  "Centro Cristal Taça Trabalhada Pequena",
+        "valor":  0,
+        "categoria":  "Cristalaria",
+        "tags":  [
+                     "centro",
+                     "cristal",
+                     "taça",
+                     "trabalhada"
+                 ]
+    },
+    {
+        "pagina":  21,
+        "nome":  "CRISTAL ECO REDONDO BOLO",
+        "valor":  0.0,
+        "categoria":  "Cristalaria",
+        "tags":  [
+                     "cristal eco",
+                     "redondo",
+                     "prato bolo"
+                 ]
+    },
+    {
+        "pagina":  21,
+        "nome":  "Centro saladeira cristal trabalhada",
+        "valor":  0.0,
+        "categoria":  "Cristalaria",
+        "tags":  [
+                     "centro",
+                     "saladeira",
+                     "cristal",
+                     "trabalhada"
+                 ]
+    },
+    {
+        "pagina":  21,
+        "nome":  "Taça Cristal Trofeu Funda",
+        "valor":  0.0,
+        "categoria":  "Cristalaria",
+        "tags":  [
+                     "taça",
+                     "cristal",
+                     "trofeu",
+                     "funda"
+                 ]
+    },
+    {
+        "pagina":  21,
+        "nome":  "Cadeira Acrilica Dior (Peça de Cristal)",
+        "valor":  0.0,
+        "categoria":  "Cristalaria",
+        "tags":  [
+                     "cristal",
+                     "centro de mesa",
+                     "dior"
+                 ]
+    },
+    {
+        "pagina":  22,
+        "nome":  "Suporte Preto Três Partes com base Madeira",
+        "valor":  45.0,
+        "categoria":  "Suportes",
+        "tags":  [
+                     "suporte",
+                     "preto",
+                     "madeira",
+                     "panelinhas"
+                 ]
+    },
+    {
+        "pagina":  22,
+        "nome":  "Suporte Preto 2 partes com base em Madeira",
+        "valor":  26.0,
+        "categoria":  "Suportes",
+        "tags":  [
+                     "suporte",
+                     "preto",
+                     "madeira"
+                 ]
+    },
+    {
+        "pagina":  22,
+        "nome":  "Suporte Preto 12 Taças",
+        "valor":  28.0,
+        "categoria":  "Suportes",
+        "tags":  [
+                     "suporte",
+                     "preto",
+                     "taças"
+                 ]
+    },
+    {
+        "pagina":  22,
+        "nome":  "Suporte Preto Palha Dois Andares",
+        "valor":  36.0,
+        "categoria":  "Suportes",
+        "tags":  [
+                     "suporte",
+                     "preto",
+                     "palha",
+                     "dois andares"
+                 ]
+    },
+    {
+        "pagina":  22,
+        "nome":  "Suporte Preto Curvado Quatro Partes de Madeira",
+        "valor":  26.0,
+        "categoria":  "Suportes",
+        "tags":  [
+                     "suporte",
+                     "preto",
+                     "curvado",
+                     "madeira"
+                 ]
+    },
+    {
+        "pagina":  22,
+        "nome":  "Prateleira Retangular 4 Partes de Madeira",
+        "valor":  45.0,
+        "categoria":  "Suportes",
+        "tags":  [
+                     "prateleira",
+                     "retangular",
+                     "madeira"
+                 ]
+    },
+    {
+        "pagina":  22,
+        "nome":  "Suporte Preto - Pães, Sanduíches Baixo",
+        "valor":  22.0,
+        "categoria":  "Suportes",
+        "tags":  [
+                     "suporte",
+                     "preto",
+                     "pães",
+                     "sanduíches"
+                 ]
+    },
+    {
+        "pagina":  22,
+        "nome":  "Suporte Preto - Pães, Sanduíches Alto",
+        "valor":  22.0,
+        "categoria":  "Suportes",
+        "tags":  [
+                     "suporte",
+                     "preto",
+                     "pães",
+                     "sanduíches"
+                 ]
+    },
+    {
+        "pagina":  22,
+        "nome":  "Suporte Favo de Mel",
+        "valor":  36.0,
+        "categoria":  "Suportes",
+        "tags":  [
+                     "suporte",
+                     "favo de mel",
+                     "preto"
+                 ]
+    },
+    {
+        "pagina":  22,
+        "nome":  "Prateleira Pirâmide 4 Partes de Madeira",
+        "valor":  40.0,
+        "categoria":  "Suportes",
+        "tags":  [
+                     "prateleira",
+                     "pirâmide",
+                     "madeira"
+                 ]
+    }
+]
