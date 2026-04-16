@@ -53,14 +53,14 @@ serve(async (req) => {
         }
         const placeholders = idsArray.map(() => '?').join(',');
         const [rows] = await connection.execute(
-            `SELECT CodigoDoProduto, Descricao, ValorLocacao, NomeDaImagem, Classe FROM produtos WHERE CodigoDoProduto IN (${placeholders})`,
+            `SELECT CodigoDoProduto, Descricao, ValorLocacao, NomeDaImagem, Classe FROM produtos WHERE CodigoDoProduto IN (${placeholders}) AND Setor = 'CATÁLOGO'`,
             idsArray
         );
         results = rows;
     } else {
         // Normal Catalog Query
         const [rows] = await connection.execute(
-            `SELECT CodigoDoProduto, Descricao, ValorLocacao, NomeDaImagem, Classe FROM produtos WHERE Ativo = 1 AND NomeDaImagem IS NOT NULL AND NomeDaImagem != '' LIMIT ? OFFSET ?`,
+            `SELECT CodigoDoProduto, Descricao, ValorLocacao, NomeDaImagem, Classe FROM produtos WHERE Ativo = 1 AND Setor = 'CATÁLOGO' AND NomeDaImagem IS NOT NULL AND NomeDaImagem != '' LIMIT ? OFFSET ?`,
             [String(limit), String(offset)] // Execute needs strings for limit/offset in mysql2 array
         );
         results = rows;
