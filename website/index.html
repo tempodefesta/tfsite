@@ -495,6 +495,7 @@
             if (btnMore) btnMore.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 animate-spin text-amber-600"></i>';
 
             try {
+                const itemsPerPage = 12;
                 let url = `https://kdqwiscohcxpsfzcfcyx.supabase.co/functions/v1/vane-proxy?page=${window.currentPage}&limit=${itemsPerPage}`;
                 if (window.activeCategory !== 'Todos') {
                     url += `&classe=${encodeURIComponent(window.activeCategory)}`;
@@ -588,7 +589,7 @@
             lucide.createIcons();
         };
 
-        loadCatalog();
+
 
         // Função para Processamento da IA e Geração de Curadoria
         window.analyzeEvent = async () => {
