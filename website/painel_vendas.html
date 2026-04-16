@@ -81,10 +81,7 @@
                 <button type="submit" class="w-full bg-slate-800 text-white rounded-xl py-3 font-semibold text-sm hover:bg-slate-700 transition-colors shadow-lg shadow-slate-200 mt-2">
                     Entrar no Painel
                 </button>
-                <div class="mt-4 pt-4 border-t border-slate-100 flex flex-col gap-2">
-                    <button type="button" id="btn-register" class="w-full text-amber-600 text-xs font-semibold hover:underline">Conta nova? Criar acesso de teste</button>
-                    <p id="reg-msg" class="text-[10px] text-green-600 text-center hidden">Conta criada com sucesso! Pode entrar.</p>
-                </div>
+                    <!-- Botão de registro removido (Contas via Supabase Dashboard) -->
             </form>
         </div>
     </div>
@@ -356,17 +353,7 @@
             }
         });
 
-        document.getElementById('btn-register').addEventListener('click', async () => {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('senha').value;
-            if(!email || !password) return alert("Preencha email e senha acima para criar conta.");
-            
-            const { error } = await supabase.auth.signUp({ email, password });
-            if(error) alert(error.message);
-            else {
-                document.getElementById('reg-msg').classList.remove('hidden');
-            }
-        });
+
 
         document.getElementById('btn-logout').addEventListener('click', async () => {
             await supabase.auth.signOut();
