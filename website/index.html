@@ -472,33 +472,17 @@
         // Função utilitária para renderização de moedas
         const formatMoney = (val) => val ? new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val) : 'Sob Consulta';
 
-        // Passo 1 Inicial: Baixar mapa de Categorias da IA (Supabase) pra montar Menu + Paginação Server-Side
+        // Passo 1 Inicial: Baixar classes (Setor CATÁLOGO) do Vane ERP para montar Menu
         window.fetchCategoryMap = async function() {
             try {
-                // Tenta puxar a estrutura gerada pela IA
-        
-                const { data, error } = await supabase.from('vetores_ia').select('vane_id, categoria');
-                if (error) throw error;
-                if (!data || data.length === 0) return; // Fallback: categorias serão dinâmicas via ERP Proxy depois
-
-                const catIds = { 'Todos': [] };
-                const catMap = {};
+                const res = await fetch('https://kdqwiscohcxpsfzcfcyx.supabase.co/functions/v1/vane-proxy?action=classes');
+                if (!res.ok) throw new Error('Falha ao buscar classes do ERP');
+                const classes = await res.json();
                 
-                data.forEach(row => {
-                    const id = row.vane_id;
-                    let cat = row.categoria || 'Geral';
-                    
-                    catMap[id] = cat;
-                    catIds['Todos'].push(id);
-                    if(!catIds[cat]) catIds[cat] = [];
-                    catIds[cat].push(id);
-                });
-
-                window.categoryIds = catIds;
-                window.categoryMap = catMap;
+                window.availableClasses = ['Todos', ...classes];
                 window.renderFilters();
             } catch (err) {
-                console.error("Aviso: Falha ao carregar matriz estrutural da IA", err);
+                console.error("Aviso: Falha ao carregar matriz de Classes do Vane", err);
             }
         }
 
@@ -511,23 +495,9 @@
             if (btnMore) btnMore.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 animate-spin text-amber-600"></i>';
 
             try {
-                let url = '';
-                const itemsPerPage = 12;
-
-                // Se selecionou 'Todos' e não tem sync prévio completo, faz paginação crua no Proxy
-                if (window.activeCategory === 'Todos' && window.categoryIds['Todos'].length === 0) {
-                    url = `https://kdqwiscohcxpsfzcfcyx.supabase.co/functions/v1/vane-proxy?page=${window.currentPage}&limit=${itemsPerPage}`;
-                } else {
-                    // Puxa Paginação com IDs específicos pré-processados pela tela
-                    const targetList = window.categoryIds[window.activeCategory] || window.categoryIds['Todos'];
-                    const offset = (window.currentPage - 1) * itemsPerPage;
-                    const chunk = targetList.slice(offset, offset + itemsPerPage);
-                    
-                    if (chunk.length === 0) {
-                        window.hasMoreProducts = false;
-                    } else {
-                        url = `https://kdqwiscohcxpsfzcfcyx.supabase.co/functions/v1/vane-proxy?ids=${chunk.join(',')}`;
-                    }
+                let url = `https://kdqwiscohcxpsfzcfcyx.supabase.co/functions/v1/vane-proxy?page=${window.currentPage}&limit=${itemsPerPage}`;
+                if (window.activeCategory !== 'Todos') {
+                    url += `&classe=${encodeURIComponent(window.activeCategory)}`;
                 }
 
                 if (url) {
@@ -540,7 +510,7 @@
                     // Mapear os produtos formatando
                     const formattedProducts = newProducts.map(p => ({
                         ...p,
-                        categoria: window.categoryMap[p.id] || p.categoria || 'Geral', // Prioridade máxima IA, senão Classe Vane ERP
+                        categoria: p.categoria || 'Geral', // Classe do Vane ERP (retornada pela proxy como categoria)
                         valor: formatMoney(p.preco)
                     }));
     
@@ -569,13 +539,9 @@
 
         window.renderFilters = () => {
             const container = document.getElementById('catalog-filters');
-            if(!container) return;
-            // Se já foi processado pelo Mapa da IA (existem chaves lá)
-            const mapCategories = Object.keys(window.categoryIds);
-            const dataCategories = ['Todos', ...new Set(window.catalogProducts.map(p => p.categoria).filter(Boolean))];
+            if(!container || !window.availableClasses) return;
             
-            let categories = mapCategories.length > 1 ? mapCategories : dataCategories;
-            categories = categories.sort((a,b) => a==='Todos' ? -1 : (b==='Todos' ? 1 : a.localeCompare(b)));
+            const categories = window.availableClasses;
             
             container.innerHTML = categories.map(cat => `
                 <button onclick="window.filterCatalog('${cat}')" class="px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition ${cat === window.activeCategory ? 'bg-amber-600 text-white shadow-md shadow-amber-200' : 'bg-slate-100 text-slate-500 hover:bg-amber-100 hover:text-amber-700'} border border-transparent hover:border-amber-200">
