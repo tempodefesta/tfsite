@@ -17,6 +17,16 @@
     <meta name="geo.position" content="-19.8943;-43.9315">
     <meta name="ICBM" content="-19.8943, -43.9315">
     
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10940472864"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-10940472864');
+    </script>
+    
     <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.tempodefestas.com.br/">
@@ -274,7 +284,7 @@
             <div class="mt-24 p-12 rounded-[40px] bg-amber-600/5 border border-amber-600/20 text-center max-w-4xl mx-auto shadow-2xl">
                 <h4 class="serif text-2xl mb-6 text-amber-200 italic font-bold">Deseja Prosseguir com esta Selecção?</h4>
                 <p class="text-slate-400 mb-10 font-light text-base max-w-xl mx-auto">A nossa equipe de consultores está preparada para finalizar os detalhes do seu orçamento personalizado via WhatsApp.</p>
-                <a id="whatsapp-link" href="#" target="_blank" class="inline-flex items-center gap-4 bg-amber-600 hover:bg-amber-700 text-white px-14 py-5 rounded-full font-bold transition transform hover:scale-105 shadow-2xl text-[11px] tracking-[0.2em] uppercase">
+                <a id="whatsapp-link" href="#" target="_blank" onclick="gtag('event', 'conversion', {'send_to': 'AW-10940472864'});" class="inline-flex items-center gap-4 bg-amber-600 hover:bg-amber-700 text-white px-14 py-5 rounded-full font-bold transition transform hover:scale-105 shadow-2xl text-[11px] tracking-[0.2em] uppercase">
                     <i data-lucide="message-circle" class="w-6 h-6"></i> Enviar Sugestões
                 </a>
             </div>
@@ -425,9 +435,9 @@
                         </a>
                     </div>
                     <div>
-                        <h4 class="font-bold uppercase tracking-[0.4em] text-[9px] mb-6 text-amber-600">Contato Direto</h4>
-                        <a href="https://api.whatsapp.com/send?phone=5531997170966&text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20atendimento." target="_blank" class="text-slate-300 hover:text-[#25D366] transition font-light text-sm mb-4 flex items-center justify-center md:justify-start gap-3">
-                            <i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i> (31) 99717-0966
+                        <h4 class="text-white font-bold mb-6 text-lg tracking-wide">Fale Conosco</h4>
+                        <a href="https://api.whatsapp.com/send?phone=5531997170966&text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20atendimento." target="_blank" onclick="gtag('event', 'conversion', {'send_to': 'AW-10940472864'});" class="text-slate-300 hover:text-[#25D366] transition font-light text-sm mb-4 flex items-center justify-center md:justify-start gap-3">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i> (31) 99717-0966
                         </a>
                         <a href="https://www.instagram.com/tempodefestasbh/" target="_blank" class="text-slate-300 hover:text-white transition font-light text-sm flex items-center justify-center md:justify-start gap-3 group">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" class="w-5 h-5 group-hover:scale-110 transition" alt="Instagram"> @tempodefestasbh
@@ -454,7 +464,7 @@
     </button>
 
     <!-- Botão Flutuante do WhatsApp -->
-    <a href="https://api.whatsapp.com/send?phone=5531997170966&text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20atendimento." target="_blank" class="fixed bottom-[30px] right-[30px] z-40 bg-[#25D366] text-white p-4 rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:bg-[#20bd5a] transition transform hover:scale-110 flex items-center group overflow-hidden">
+    <a href="https://api.whatsapp.com/send?phone=5531997170966&text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20atendimento." target="_blank" onclick="gtag('event', 'conversion', {'send_to': 'AW-10940472864'});" class="fixed bottom-[30px] right-[30px] z-40 bg-[#25D366] text-white p-4 rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:bg-[#20bd5a] transition transform hover:scale-110 flex items-center group overflow-hidden">
         <i data-lucide="message-circle" class="w-7 h-7 relative z-10"></i>
         <div class="absolute inset-0 rounded-full animate-ping bg-white opacity-20"></div>
         <span class="hidden md:block overflow-hidden whitespace-nowrap text-sm font-bold tracking-wide pl-3 relative z-10">WhatsApp</span>
@@ -1073,6 +1083,11 @@
                 }));
                 const { error: e2 } = await supabase.from('orcamento_itens').insert(itens);
                 if (e2) throw e2;
+
+                // Disparo Analítico de Google Ads Conversão
+                if(typeof gtag === 'function') {
+                    gtag('event', 'conversion', {'send_to': 'AW-10940472864'});
+                }
 
                 // Restauro UI Sucesso
                 document.getElementById('cart-form').classList.add('hidden');
