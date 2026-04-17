@@ -1084,11 +1084,6 @@
                 const { error: e2 } = await supabase.from('orcamento_itens').insert(itens);
                 if (e2) throw e2;
 
-                // Disparo Analítico de Google Ads Conversão
-                if(typeof gtag === 'function') {
-                    gtag('event', 'conversion', {'send_to': 'AW-10940472864'});
-                }
-
                 // Restauro UI Sucesso
                 document.getElementById('cart-form').classList.add('hidden');
                 document.getElementById('cart-success').classList.remove('hidden');
@@ -1096,6 +1091,16 @@
                 window.cart = [];
                 document.getElementById('cart-badge').textContent = '0';
                 document.getElementById('btn-cart-float').classList.add('hidden');
+
+                // Disparo Analítico de Google Ads Conversão
+                if(typeof gtag === 'function') {
+                    gtag('event', 'conversion', {'send_to': 'AW-10940472864'});
+                }
+
+                // Disparo Assíncrono do Alerta de E-mail Interno (Sem bloquear UI)
+                supabase.functions.invoke('email-novos-pedidos', {
+                    body: { type: 'INSERT', table: 'orcamentos', record: orcData }
+                }).catch(e => console.error("Falha ao notificar e-mail: ", e));
 
             } catch (err) {
                 alert('Ocorreu um erro ao formalizar o pedido. Por favor tente via WhatsApp. Detalhe: ' + err.message);

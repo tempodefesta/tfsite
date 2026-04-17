@@ -45,7 +45,19 @@ serve(async (req) => {
     });
 
     let results = [];
-    if (fetchIds) {
+    const action = url.searchParams.get('action');
+    const classeFilter = url.searchParams.get('classe');
+
+    if (action === 'classes') {
+        const [rows] = await connection.execute(
+            `SELECT DISTINCT Classe FROM produtos WHERE Setor = 'CATÁLOGO' AND Classe IS NOT NULL AND Classe != ''`
+        );
+        results = rows.map((r: any) => r.Classe);
+        await connection.end();
+        return new Response(JSON.stringify(results), {
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+    } else if (fetchIds) {
         // IDs via AI semantic search
         const idsArray = fetchIds.split(',').map(id => parseInt(id)).filter(id => !isNaN(id));
         if (idsArray.length === 0) {
@@ -55,6 +67,12 @@ serve(async (req) => {
         const [rows] = await connection.execute(
             `SELECT CodigoDoProduto, Descricao, ValorLocacao, NomeDaImagem, Classe FROM produtos WHERE CodigoDoProduto IN (${placeholders}) AND Setor = 'CATÁLOGO'`,
             idsArray
+        );
+        results = rows;
+    } else if (classeFilter && classeFilter !== 'Todos') {
+        const [rows] = await connection.execute(
+            `SELECT CodigoDoProduto, Descricao, ValorLocacao, NomeDaImagem, Classe FROM produtos WHERE Ativo = 1 AND Setor = 'CATÁLOGO' AND Classe = ? AND NomeDaImagem IS NOT NULL AND NomeDaImagem != '' LIMIT ? OFFSET ?`,
+            [classeFilter, String(limit), String(offset)]
         );
         results = rows;
     } else {
