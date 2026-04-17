@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /painel_vendas.html
+
+Sitemap: https://www.tempodefestas.com.br/sitemap.xml
