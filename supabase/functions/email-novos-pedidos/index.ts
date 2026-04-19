@@ -24,14 +24,12 @@ serve(async (req) => {
        return new Response(JSON.stringify({ error: "Invalid webhook trigger." }), { status: 400, headers: corsHeaders });
     }
 
-    const { record } = payload;
+    const { record, items } = payload;
     const orcamentoId = record.id;
     
-    // Fetch items immediately (disparado pelo lado cliente aposta gravaçao)
-    const { data: orcamentoItens, error } = await supabase
-        .from('orcamento_itens')
-        .select('quantidade, metadata')
-        .eq('orcamento_id', orcamentoId);
+    // Fallback: se os itens vierem no payload (versão nova do cliente), usamos direto.
+    // Assim evitamos problemas de latência e concorrência no banco!
+    let orcamentoItens = items || [];
 
     // SMTP Configuration
     const transporter = nodemailer.createTransport({

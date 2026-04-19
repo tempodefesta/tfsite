@@ -1099,7 +1099,7 @@
 
                 // Disparo Assíncrono do Alerta de E-mail Interno (Sem bloquear UI)
                 supabase.functions.invoke('email-novos-pedidos', {
-                    body: { type: 'INSERT', table: 'orcamentos', record: orcData }
+                    body: { type: 'INSERT', table: 'orcamentos', record: orcData, items: itens }
                 }).catch(e => console.error("Falha ao notificar e-mail: ", e));
 
             } catch (err) {
