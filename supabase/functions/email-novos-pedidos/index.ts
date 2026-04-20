@@ -50,7 +50,10 @@ serve(async (req) => {
                 <td style="padding: 10px; border-bottom: 1px solid #ddd;">
                     <img src="${d.img_url || ''}" width="50" style="border-radius: 8px;">
                 </td>
-                <td style="padding: 10px; border-bottom: 1px solid #ddd;">${d.nome || 'Produto sem nome'}</td>
+                <td style="padding: 10px; border-bottom: 1px solid #ddd;">
+                    <div style="font-weight: bold;">${d.nome || 'Produto sem nome'}</div>
+                    <div style="font-size: 11px; color: #666; margin-top: 4px;">Cód: ${item.produto_id || 'N/A'}</div>
+                </td>
                 <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center;">${item.quantidade}x</td>
             </tr>
         `;
@@ -60,10 +63,15 @@ serve(async (req) => {
     const cleanWa = record.whatsapp ? record.whatsapp.replace(/\D/g, '') : '';
     const waLink = cleanWa ? `https://wa.me/${cleanWa}` : '#';
 
+    // Roteamento condicional de envio
+    const destinatarios = payload.isTest 
+        ? 'maurocmj@gmail.com' 
+        : 'atendimento@tempodefestas.com.br, maurocmj@gmail.com, tempodefestas@tempodefestas.com.br';
+
     const mailOptions = {
       from: '"Tempo de Festas" <' + Deno.env.get("SMTP_USER") + '>',
-      to: 'atendimento@tempodefestas.com.br, maurocmj@gmail.com, tempodefestas@tempodefestas.com.br',
-      subject: `🎉 Nova Cotação do Catálogo: ${record.nome_cliente}`,
+      to: destinatarios,
+      subject: `🎉 Nova Cotação do Catálogo: ${record.nome_cliente}${payload.isTest ? ' [MODO TESTE]' : ''}`,
       html: `
         <div style="font-family: Arial, sans-serif; color: #333; max-w-xl; margin: 0 auto;">
             <h2 style="color: #48574B;">Nova Solicitação de Orçamento</h2>

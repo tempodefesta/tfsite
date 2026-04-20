@@ -35,7 +35,7 @@ serve(async (req) => {
         user: 'vane_utempodefesta',
         password: 'chronos_tempodefestan@vane88', // This could also be a secret, keeping here for sync
         database: 'vane_tempodefesta',
-        charset: 'latin1',
+        charset: 'utf8mb4',
         ssl: {
             ca: ca_cert,
             key: client_key,
@@ -50,12 +50,16 @@ serve(async (req) => {
 
     if (action === 'classes') {
         const [rows] = await connection.execute(
-            `SELECT DISTINCT Classe FROM produtos WHERE Setor = 'CATÁLOGO' AND Classe IS NOT NULL AND Classe != ''`
+            `SELECT DISTINCT Classe FROM produtos WHERE Setor = 'CATÁLOGO' AND Ativo = 1 AND NomeDaImagem IS NOT NULL AND NomeDaImagem != '' AND Classe IS NOT NULL AND Classe != ''`
         );
         results = rows.map((r: any) => r.Classe);
         await connection.end();
         return new Response(JSON.stringify(results), {
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            headers: { 
+                ...corsHeaders, 
+                'Content-Type': 'application/json',
+                'Cache-Control': 'public, max-age=60, s-maxage=300'
+            },
         });
     } else if (fetchIds) {
         // IDs via AI semantic search
@@ -96,7 +100,11 @@ serve(async (req) => {
     }));
 
     return new Response(JSON.stringify(finalData), {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        headers: { 
+            ...corsHeaders, 
+            'Content-Type': 'application/json',
+            'Cache-Control': 'public, max-age=60, s-maxage=300'
+        },
     });
 
   } catch (error) {

@@ -114,6 +114,16 @@
     <!-- Biblioteca de Ícones -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        /* Removes arrows from input type number */
+        .hide-arrows::-webkit-outer-spin-button,
+        .hide-arrows::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .hide-arrows {
+            -moz-appearance: textfield;
+        }
+
         html, body {
             overflow-x: hidden;
             width: 100%;
@@ -231,9 +241,10 @@
         </div>
 
         <!-- Conteúdo Hero -->
-        <div class="relative text-center px-4 max-w-5xl z-10">
-            <span class="text-amber-400 font-bold tracking-[0.4em] uppercase text-[10px] md:text-xs mb-6 block">Belo Horizonte • <span class="dynamic-years"></span> Anos de Realizações</span>
-            <h1 class="serif text-4xl md:text-8xl text-white mb-10 leading-[1.1]">Momentos que <br class="hidden md:block"> se tornam <span class="italic">Eternos</span></h1>
+        <div class="relative text-center px-4 max-w-5xl z-10 w-full mt-10 md:mt-0">
+            <span class="text-amber-400 font-bold tracking-[0.4em] uppercase text-[10px] md:text-xs mb-4 block">Belo Horizonte</span>
+            <h1 class="serif text-4xl md:text-6xl lg:text-7xl text-white mb-6 leading-[1.1]">Aluguel de materiais e<br class="hidden md:block"> mobiliários para festas</h1>
+            <p class="text-amber-400/90 font-semibold tracking-[0.3em] uppercase text-[11px] md:text-sm mb-10 max-w-3xl mx-auto drop-shadow-sm">Há <span class="dynamic-years"></span> anos entregando excelência e momentos únicos.</p>
             
             <!-- Interface do Estilista IA Minimalista -->
             <div class="flex flex-col md:flex-row items-stretch justify-center gap-4 max-w-4xl mx-auto">
@@ -258,10 +269,6 @@
             <div id="ai-chips-container" class="mt-8 flex flex-wrap justify-center gap-3 max-w-4xl mx-auto relative z-20">
                 <!-- Injetado dinamicamente via JS de acordo com a sazonalidade -->
             </div>
-            
-            <p class="text-white/40 text-[9px] mt-10 font-bold uppercase tracking-[0.4em]">
-                Curadoria Premium • Mobiliário • Cristais • Design de Eventos
-            </p>
         </div>
     </section>
 
@@ -320,12 +327,14 @@
             </div>
 
             <!-- Imagens Intermediárias Luxuosas -->
-            <div class="hidden md:grid md:grid-cols-3 gap-8 my-20">
-                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800" class="w-full h-72 md:h-80 object-cover shadow-2xl rounded-3xl transition-transform hover:scale-[1.02] duration-500" alt="Mesa de Casamento">
+            <div class="hidden md:grid md:grid-cols-4 gap-6 my-20">
+                <img src="https://kdqwiscohcxpsfzcfcyx.supabase.co/storage/v1/object/public/img/IMG_4591.JPG" class="w-full h-64 lg:h-80 object-cover shadow-2xl rounded-3xl transition-transform hover:scale-[1.02] duration-500" alt="Acervo Tempo de Festas 1">
                 
-                <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=800" class="w-full h-72 md:h-80 object-cover shadow-2xl rounded-3xl transition-transform hover:scale-[1.02] duration-500 translate-y-0 md:translate-y-6" alt="Decoração de Festa">
+                <img src="https://kdqwiscohcxpsfzcfcyx.supabase.co/storage/v1/object/public/img/IMG_5268.JPG" class="w-full h-64 lg:h-80 object-cover shadow-2xl rounded-3xl transition-transform hover:scale-[1.02] duration-500 translate-y-0 md:translate-y-8" alt="Acervo Tempo de Festas 2">
                 
-                <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=800" class="w-full h-72 md:h-80 object-cover shadow-2xl rounded-3xl transition-transform hover:scale-[1.02] duration-500" alt="Catering Empresarial">
+                <img src="https://kdqwiscohcxpsfzcfcyx.supabase.co/storage/v1/object/public/img/IMG_5269.JPG" class="w-full h-64 lg:h-80 object-cover shadow-2xl rounded-3xl transition-transform hover:scale-[1.02] duration-500" alt="Acervo Tempo de Festas 3">
+
+                <img src="https://kdqwiscohcxpsfzcfcyx.supabase.co/storage/v1/object/public/img/IMG_5270.JPG" class="w-full h-64 lg:h-80 object-cover shadow-2xl rounded-3xl transition-transform hover:scale-[1.02] duration-500 translate-y-0 md:translate-y-8" alt="Acervo Tempo de Festas 4">
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20 text-center">
@@ -400,7 +409,11 @@
             </div>
 
             <div id="full-catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Renderizado por JS -->
+                <!-- Estado Inicial de Carregamento -->
+                <div class="col-span-full py-32 flex flex-col items-center justify-center text-amber-600">
+                    <div class="ai-loader w-10 h-10 mb-4 border-amber-200 border-t-amber-600"></div>
+                    <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-slate-400">Trazendo o Acervo...</p>
+                </div>
             </div>
 
             <div class="mt-16 text-center">
@@ -487,7 +500,7 @@
                 </div>
                 <div class="space-y-1">
                     <label class="block text-[10px] uppercase font-bold text-slate-500 ml-1 tracking-wider">Seu WhatsApp</label>
-                    <input type="tel" id="cart-wp" required placeholder="(31) 99999-9999" class="w-full bg-white border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-amber-500/50 outline-none font-medium">
+                    <input type="tel" id="cart-wp" required minlength="14" maxlength="15" placeholder="(31) 99999-9999" class="w-full bg-white border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-amber-500/50 outline-none font-medium">
                 </div>
                 <div class="space-y-1">
                     <label class="block text-[10px] uppercase font-bold text-slate-500 ml-1 tracking-wider">Data para a Locação <span class="text-slate-400 font-normal lowercase">(dd/mm/aaaa)</span></label>
@@ -553,12 +566,24 @@
         // Passo 1 Inicial: Baixar classes (Setor CATÁLOGO) do Vane ERP para montar Menu
         window.fetchCategoryMap = async function() {
             try {
+                const cached = localStorage.getItem('vane-classes');
+                if (cached) {
+                    window.availableClasses = JSON.parse(cached);
+                    window.renderFilters();
+                }
+
                 const res = await fetch('https://kdqwiscohcxpsfzcfcyx.supabase.co/functions/v1/vane-proxy?action=classes');
                 if (!res.ok) throw new Error('Falha ao buscar classes do ERP');
                 const classes = await res.json();
                 
-                window.availableClasses = ['Todos', ...classes];
-                window.renderFilters();
+                const fullClasses = ['Todos', ...classes];
+                localStorage.setItem('vane-classes', JSON.stringify(fullClasses));
+                
+                // Só repinta se tiver mudado
+                if (!cached || JSON.stringify(fullClasses) !== cached) {
+                    window.availableClasses = fullClasses;
+                    window.renderFilters();
+                }
             } catch (err) {
                 console.error("Aviso: Falha ao carregar matriz de Classes do Vane", err);
             }
@@ -571,6 +596,15 @@
             
             const btnMore = document.getElementById('btn-load-more');
             if (btnMore) btnMore.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 animate-spin text-amber-600"></i>';
+
+            // Cache visual imediato para primeira página (Sem Spinner Demorado)
+            if (window.currentPage === 1 && window.activeCategory === 'Todos' && window.catalogProducts.length === 0) {
+                const cachedP1 = localStorage.getItem('vane-catalog-p1');
+                if (cachedP1) {
+                    window.catalogProducts = JSON.parse(cachedP1);
+                    window.renderFullCatalog(); // Tira a tela branca/esqueleto e mostra os 12 velhos
+                }
+            }
 
             try {
                 const itemsPerPage = 12;
@@ -589,11 +623,21 @@
                     // Mapear os produtos formatando
                     const formattedProducts = newProducts.map(p => ({
                         ...p,
-                        categoria: p.categoria || 'Geral', // Classe do Vane ERP (retornada pela proxy como categoria)
+                        categoria: p.classe || p.categoria || 'Geral', // Classe do Vane ERP (retornada pela proxy como categoria)
                         valor: formatMoney(p.preco)
                     }));
     
-                    window.catalogProducts = [...window.catalogProducts, ...formattedProducts];
+                    if (window.currentPage === 1) {
+                        window.catalogProducts = formattedProducts; // Substitui o cache
+                    } else {
+                        window.catalogProducts = [...window.catalogProducts, ...formattedProducts];
+                    }
+
+                    // Salva a Página 1 e Categoria "Todos" no localStorage para arranque quase instantâneo
+                    if (window.currentPage === 1 && window.activeCategory === 'Todos') {
+                        localStorage.setItem('vane-catalog-p1', JSON.stringify(formattedProducts));
+                    }
+
                     window.renderFilters();
                     window.renderFullCatalog();
                     window.currentPage++;
@@ -635,7 +679,15 @@
             window.catalogProducts = []; // Reseta RAM
             window.currentPage = 1;
             window.hasMoreProducts = true;
-            document.getElementById('full-catalog-grid').innerHTML = ''; // Reseta DOM
+            
+            // Show loading state in DOM instead of a blank screen
+            document.getElementById('full-catalog-grid').innerHTML = `
+                <div class="col-span-full py-32 flex flex-col items-center justify-center text-amber-600">
+                    <div class="ai-loader w-10 h-10 mb-4 border-amber-200 border-t-amber-600"></div>
+                    <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-slate-400">Trazendo o Acervo...</p>
+                </div>
+            `; 
+            
             window.renderFilters(); // Repinta seleçao na UI
             window.loadCatalog(); // Pede novos dados no proxy!
         };
@@ -915,9 +967,20 @@
         };
 
         // Init Bootstrap
-        window.addEventListener('DOMContentLoaded', async () => {
-            await fetchCategoryMap();
-            await loadCatalog();
+        window.addEventListener('DOMContentLoaded', () => {
+            Promise.all([
+                fetchCategoryMap(),
+                loadCatalog()
+            ]);
+
+            // WhatsApp Mask
+            const wpInput = document.getElementById('cart-wp');
+            if (wpInput) {
+                wpInput.addEventListener('input', function (e) {
+                    let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+                    e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+                });
+            }
         });
 
         // --- Lógica do Carrinho de Orçamentos ---
@@ -1018,6 +1081,16 @@
             }
         };
 
+        window.setQuantity = (prodId, value) => {
+            const item = window.cart.find(p => String(p.id) === String(prodId));
+            if (item) {
+                let qty = parseInt(value, 10);
+                if (isNaN(qty) || qty < 1) qty = 1;
+                item.quantidade = qty;
+                window.renderCart();
+            }
+        };
+
         window.renderCart = () => {
             const container = document.getElementById('cart-items');
             const form = document.getElementById('cart-form');
@@ -1039,7 +1112,7 @@
                         <h4 class="font-bold text-sm text-slate-800 leading-tight mb-2">${p.nome}</h4>
                         <div class="flex items-center gap-3">
                             <button type="button" onclick="window.updateQuantity('${p.id}', -1)" class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition font-serif shrink-0">-</button>
-                            <span class="text-xs font-bold text-slate-700 w-4 text-center shrink-0">${p.quantidade || 1}</span>
+                            <input type="number" onchange="window.setQuantity('${p.id}', this.value)" onblur="window.setQuantity('${p.id}', this.value)" class="hide-arrows w-10 text-center text-xs font-bold text-slate-700 bg-transparent border-b-2 border-transparent hover:border-slate-300 focus:border-amber-600 focus:outline-none transition-colors" value="${p.quantidade || 1}">
                             <button type="button" onclick="window.updateQuantity('${p.id}', 1)" class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition font-serif shrink-0">+</button>
                         </div>
                     </div>
@@ -1098,8 +1171,16 @@
                 }
 
                 // Disparo Assíncrono do Alerta de E-mail Interno (Sem bloquear UI)
+                const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+                
                 supabase.functions.invoke('email-novos-pedidos', {
-                    body: { type: 'INSERT', table: 'orcamentos', record: orcData, items: itens }
+                    body: { 
+                        type: 'INSERT', 
+                        table: 'orcamentos', 
+                        record: orcData, 
+                        items: itens,
+                        isTest: isLocal
+                    }
                 }).catch(e => console.error("Falha ao notificar e-mail: ", e));
 
             } catch (err) {
@@ -1115,49 +1196,30 @@
             if(!container) return;
 
             const currentMonth = new Date().getMonth(); // 0 = Jan, 11 = Dec
-            let suggestions = [];
+            let seasonalSuggestion = "Almoço sofisticado à beira da piscina";
 
             // Regras de Sazonalidade
             if (currentMonth === 3 || currentMonth === 4) { // Abril, Maio (Dia das Mães)
-                suggestions = [
-                    "Almoço sofisticado de Dia das Mães com mesa posta",
-                    "Decoração rústica para um casamento no campo",
-                    "Elegante jantar de Noivado com cristais e prataria"
-                ];
+                seasonalSuggestion = "Almoço sofisticado de Dia das Mães com mesa posta";
             } else if (currentMonth === 5) { // Junho (Festa Junina / Namorados)
-                suggestions = [
-                    "Jantar romântico incrível para o Dia dos Namorados",
-                    "Festa Junina elegante com toques em madeira",
-                    "Decoração rústica para um casamento no campo"
-                ];
+                seasonalSuggestion = "Jantar romântico incrível para o Dia dos Namorados";
             } else if (currentMonth === 6 || currentMonth === 7) { // Julho, Agosto (Dia dos Pais)
-                suggestions = [
-                    "Almoço especial de Dia dos Pais com peças de design",
-                    "Coffee break de luxo para convenção executiva",
-                    "Bodas de ouro com taças e sousplat dourados"
-                ];
-            } else if (currentMonth === 9) { // Outubro (Anteriormente focado em crianças)
-                suggestions = [
-                    "Festa requintada de Halloween com decoração escura e dourada",
-                    "Decoração rústica para um casamento no campo",
-                    "Evento corporativo moderno e arrojado"
-                ];
-            } else if (currentMonth === 10 || currentMonth === 11) { // Nov, Dez (Natal, Ano Novo, Confraternizações)
-                suggestions = [
-                    "Confraternização corporativa elegante",
-                    "Mesa posta requintada de Natal com dourado",
-                    "Festa de Réveillon sofisticada pratas e cristais"
-                ];
-            } else { // Janeiro, Fevereiro, Março
-                suggestions = [
-                    "Decoração rústica para um casamento no campo",
-                    "Aniversário de 15 anos clássico e inesquecível",
-                    "Jantar corporativo de luxo com taças de cristal"
-                ];
+                seasonalSuggestion = "Almoço especial de Dia dos Pais com peças de design";
+            } else if (currentMonth === 9) { // Outubro
+                seasonalSuggestion = "Festa requintada de Halloween com decoração escura e dourada";
+            } else if (currentMonth === 10 || currentMonth === 11) { // Nov, Dez
+                seasonalSuggestion = "Confraternização corporativa de final de ano";
             }
 
+            const suggestions = [
+                seasonalSuggestion,
+                "Casamento elegante e intimista",
+                "Aniversário sofisticado em casa",
+                "Coffee break moderno para um evento empresarial"
+            ];
+
             container.innerHTML = suggestions.map((text, i) => `
-                <button onclick="document.getElementById('event-description').value=this.innerText; document.getElementById('event-description').focus()" class="bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md text-white text-[10px] md:text-xs px-5 py-2.5 rounded-full font-light transition shadow-lg text-left max-w-[280px] truncate cursor-pointer hover:border-amber-400 ${i === 2 ? 'hidden md:block' : ''}">
+                <button onclick="document.getElementById('event-description').value=this.innerText; document.getElementById('event-description').focus()" class="bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md text-white text-[10px] md:text-xs px-5 py-2.5 rounded-full font-light transition shadow-lg text-left max-w-[280px] truncate cursor-pointer hover:border-amber-400 ${i > 1 ? 'hidden md:block' : ''}">
                     ${text}
                 </button>
             `).join('');
