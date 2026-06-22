@@ -13,34 +13,31 @@ serve(async (req) => {
 
   try {
     const OPENAI_KEY = Deno.env.get("OPENAI_API_KEY");
-    if (!OPENAI_KEY) throw new Error("OPENAI_API_KEY nao configurada nos Secrets.");
+    const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || "";
+    const SUPABASE_SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
+    const VANE_PROXY_URL = "https://kdqwiscohcxpsfzcfcyx.supabase.co/functions/v1/vane-proxy";
 
-    const { description, catalogContext } = await req.json();
+    if (!OPENAI_KEY) throw new Error("OPENAI_API_KEY nao configurada.");
+
+    const { description } = await req.json();
     if (!description || typeof description !== "string") {
       return new Response(JSON.stringify({ error: "Campo description e obrigatorio." }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" }
       });
     }
 
-    // 1. Gerar embedding da descricao
+    // 1. Gerar embedding da descricao do evento
     const embRes = await fetch("https://api.openai.com/v1/embeddings", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": `Bearer ${OPENAI_KEY}` },
       body: JSON.stringify({ input: description, model: "text-embedding-3-small" })
     });
-    if (!embRes.ok) {
-      console.error("[ai-curator] embeddings error:", await embRes.text());
-      throw new Error("Falha ao gerar embedding.");
-    }
+    if (!embRes.ok) throw new Error("Falha ao gerar embedding.");
     const embData = await embRes.json();
     const queryEmbedding = embData.data[0].embedding;
 
-    // 2. Busca semantica no Supabase pgvector
-    const supabase = createClient(
-      Deno.env.get("SUPABASE_URL") || "",
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || ""
-    );
-
+    // 2. Busca semantica no pgvector para encontrar produtos relevantes
+    const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
     const { data: matchedProducts, error: matchError } = await supabase.rpc("match_produtos", {
       query_embedding: queryEmbedding,
       match_threshold: 0.1,
@@ -48,15 +45,33 @@ serve(async (req) => {
     });
     if (matchError) throw matchError;
 
-    const context = catalogContext || matchedProducts || [];
+    // 3. Buscar detalhes dos produtos encontrados no vane-proxy
+    let contextCatalog = [];
+    if (matchedProducts && matchedProducts.length > 0) {
+      const ids = matchedProducts.map((m: { vane_id: number }) => m.vane_id).join(",");
+      const proxyRes = await fetch(`${VANE_PROXY_URL}?ids=${ids}`);
+      if (proxyRes.ok) {
+        const products = await proxyRes.json();
+        contextCatalog = products.map((p: Record<string, unknown>) => ({
+          ...p,
+          categoria: p.categoria || "Geral"
+        }));
+      }
+    }
 
-    // 3. Curadoria via GPT-4o
+    if (contextCatalog.length === 0) {
+      return new Response(JSON.stringify({ error: "Nenhum produto encontrado para este evento." }), {
+        status: 404, headers: { ...corsHeaders, "Content-Type": "application/json" }
+      });
+    }
+
+    // 4. Curadoria via GPT-4o com contexto semanticamente filtrado
     const companyYears = new Date().getFullYear() - 1988;
     const systemPrompt = `Es um consultor de eventos de luxo da "Tempo de Festas" (${companyYears} anos de tradicao em BH).
-Seleciona uma curadoria rica entre 6 a 12 produtos do catalogo abaixo.
+Seleciona uma curadoria rica entre 6 a 12 produtos do catalogo abaixo (ja pre-filtrado por busca semantica).
 RETORNA EXCLUSIVAMENTE JSON: {"sugestoes": [{"id": 1234, "motivo": "Explicacao curta e sofisticada"}]}.
 O id deve ser exatamente igual ao id do catalogo, nunca invente IDs.
-CATALOGO: ${JSON.stringify(context)}`;
+CATALOGO PRE-SELECIONADO: ${JSON.stringify(contextCatalog)}`;
 
     const chatRes = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
@@ -70,19 +85,15 @@ CATALOGO: ${JSON.stringify(context)}`;
         response_format: { type: "json_object" }
       })
     });
-    if (!chatRes.ok) {
-      console.error("[ai-curator] chat error:", await chatRes.text());
-      throw new Error("Falha na curadoria IA.");
-    }
+    if (!chatRes.ok) throw new Error("Falha na curadoria IA.");
+
     const chatData = await chatRes.json();
     const parsed = JSON.parse(chatData.choices[0].message.content);
     const sugestoes = Array.isArray(parsed)
       ? parsed
       : (parsed.sugestoes || parsed.items || Object.values(parsed)[0]);
 
-    const matchedIds = (matchedProducts || []).map((m: { vane_id: number }) => m.vane_id);
-
-    return new Response(JSON.stringify({ sugestoes, matchedIds }), {
+    return new Response(JSON.stringify({ sugestoes, contextCatalog }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" }
     });
 

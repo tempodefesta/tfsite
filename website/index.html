@@ -747,16 +747,23 @@
             btnLoader.classList.remove('hidden');
 
             try {
-                // Curadoria via Edge Function segura (chave OpenAI fica no servidor)
-                const contextCatalog = window.catalogProducts.slice(0, 50);
+                // Curadoria via Edge Function segura — embedding + pgvector + GPT-4o no servidor
                 const curatorRes = await fetch('https://kdqwiscohcxpsfzcfcyx.supabase.co/functions/v1/ai-curator', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtkcXdpc2NvaGN4cHNmemNmY3l4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU5MjI0OTAsImV4cCI6MjA5MTQ5ODQ5MH0.seHvqOMljOpD8SBAyB80ltRjX-7Shk5L_QMsbygDuw0' },
-                    body: JSON.stringify({ description, catalogContext: contextCatalog })
+                    body: JSON.stringify({ description })
                 });
                 if (!curatorRes.ok) throw new Error('Serviço de curadoria indisponível.');
                 const curatorData = await curatorRes.json();
                 const aiSelection = curatorData.sugestoes || [];
+                // contextCatalog vem do servidor (já filtrado por pgvector + vane-proxy)
+                const contextCatalog = curatorData.contextCatalog || [];
+                // Garantir produtos no catálogo local para o carrinho funcionar
+                contextCatalog.forEach(p => {
+                    if (!window.catalogProducts.find(c => c.id === p.id)) {
+                        window.catalogProducts.push(p);
+                    }
+                });
 
                 // Renderização dos Resultados na Grelha
                 productsGrid.innerHTML = '';
@@ -764,7 +771,6 @@
                 let aiSuggestedIds = [];
 
                 aiSelection.forEach(item => {
-                    // O item devolvido pela IA deve estar na lista contextual que mandamos para ela
                     const product = contextCatalog.find(p => String(p.id) === String(item.id));
                     if (product) {
                         aiSuggestedIds.push(product.id);
