@@ -1146,31 +1146,89 @@
             if(!container) return;
 
             const currentMonth = new Date().getMonth(); // 0 = Jan, 11 = Dec
-            let seasonalSuggestion = "Almoço sofisticado à beira da piscina";
+            const today = new Date();
 
-            // Regras de Sazonalidade
-            if (currentMonth === 3 || currentMonth === 4) { // Abril, Maio (Dia das Mães)
-                seasonalSuggestion = "Almoço sofisticado de Dia das Mães com mesa posta";
-            } else if (currentMonth === 5) { // Junho (Festa Junina / Namorados)
-                seasonalSuggestion = "Jantar romântico incrível para o Dia dos Namorados";
-            } else if (currentMonth === 6 || currentMonth === 7) { // Julho, Agosto (Dia dos Pais)
-                seasonalSuggestion = "Almoço especial de Dia dos Pais com peças de design";
+            // ── Chip 1: Sazonal (muda por época do ano) ──────────────────────
+            let seasonalChips = [];
+
+            if (currentMonth === 0) { // Janeiro
+                seasonalChips = [
+                    "Réveillon íntimo com mesa posta e cristais",
+                    "Almoço de Ano Novo em família com louças especiais"
+                ];
+            } else if (currentMonth === 1 || currentMonth === 2) { // Fev, Mar
+                const isEaster = currentMonth === 2 || (currentMonth === 1 && today.getDate() > 20);
+                seasonalChips = isEaster
+                    ? ["Almoço de Páscoa em família com louças especiais", "Carnaval sofisticado em casa com drinks e petiscos"]
+                    : ["Carnaval sofisticado em casa com drinks e petiscos", "Almoço de Páscoa em família com louças especiais"];
+            } else if (currentMonth === 3) { // Abril
+                seasonalChips = [
+                    "Almoço de Páscoa em família com louças especiais",
+                    "Almoço de Dia das Mães com mesa posta elegante"
+                ];
+            } else if (currentMonth === 4) { // Maio
+                seasonalChips = [
+                    "Almoço de Dia das Mães com mesa posta elegante",
+                    "Jantar romântico para o Dia dos Namorados"
+                ];
+            } else if (currentMonth === 5) { // Junho
+                seasonalChips = [
+                    "Festa Junina charmosa com decoração rústica e madeira",
+                    "Jantar romântico para o Dia dos Namorados"
+                ];
+            } else if (currentMonth === 6) { // Julho
+                seasonalChips = [
+                    "Festa Junina charmosa com decoração rústica e madeira",
+                    "Churrasco de Dia dos Pais com estilo e peças de design"
+                ];
+            } else if (currentMonth === 7) { // Agosto
+                seasonalChips = [
+                    "Churrasco de Dia dos Pais com estilo e peças de design",
+                    "Formatura ao ar livre com mesas e cadeiras especiais"
+                ];
+            } else if (currentMonth === 8) { // Setembro
+                seasonalChips = [
+                    "Formatura ao ar livre com mesas e cadeiras especiais",
+                    "Halloween sofisticado com decoração dourada e escura"
+                ];
             } else if (currentMonth === 9) { // Outubro
-                seasonalSuggestion = "Festa requintada de Halloween com decoração escura e dourada";
-            } else if (currentMonth === 10 || currentMonth === 11) { // Nov, Dez
-                seasonalSuggestion = "Confraternização corporativa de final de ano";
+                seasonalChips = [
+                    "Halloween sofisticado com decoração dourada e escura",
+                    "Confraternização corporativa de final de ano"
+                ];
+            } else if (currentMonth === 10) { // Novembro
+                seasonalChips = [
+                    "Confraternização corporativa de final de ano",
+                    "Ceia de Natal em família com mesa posta completa"
+                ];
+            } else if (currentMonth === 11) { // Dezembro
+                seasonalChips = [
+                    "Ceia de Natal em família com mesa posta completa",
+                    "Réveillon íntimo com mesa posta e cristais"
+                ];
             }
 
-            const suggestions = [
-                seasonalSuggestion,
-                "Casamento elegante e intimista",
+            // ── Pool de chips fixos — sorteia 2 aleatórios a cada acesso ────
+            const fixedPool = [
+                "Casamento intimista com cristais e prataria",
+                "Chá de bebê delicado com xícaras e flores",
+                "Festa de 15 anos clássica e inesquecível",
+                "Bodas de ouro com taças e sousplats dourados",
+                "Coffee break corporativo moderno e arrojado",
+                "Batizado elegante para receber os convidados",
                 "Aniversário sofisticado em casa",
-                "Coffee break moderno para um evento empresarial"
+                "Jantar corporativo de luxo com taças de cristal"
             ];
+            // Embaralha e pega os 2 primeiros
+            const shuffled = fixedPool.sort(() => Math.random() - 0.5);
+            const fixedChips = shuffled.slice(0, 2);
+
+            // Monta lista final: até 2 sazonais + 2 fixos
+            const suggestions = [...seasonalChips, ...fixedChips];
 
             container.innerHTML = suggestions.map((text, i) => `
                 <button onclick="document.getElementById('event-description').value=this.innerText; document.getElementById('event-description').focus()" class="bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md text-white text-[10px] md:text-xs px-5 py-2.5 rounded-full font-light transition shadow-lg text-left max-w-[280px] truncate cursor-pointer hover:border-amber-400 ${i > 1 ? 'hidden md:block' : ''}">
-                    ${text}
+                    ${escapeHtml(text)}
                 </button>
             `).join('');
         }
