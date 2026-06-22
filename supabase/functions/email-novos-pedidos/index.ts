@@ -65,8 +65,8 @@ serve(async (req) => {
 
     // Roteamento condicional de envio
     const destinatarios = payload.isTest 
-        ? 'maurocmj@gmail.com' 
-        : 'atendimento@tempodefestas.com.br, maurocmj@gmail.com, tempodefestas@tempodefestas.com.br';
+        ? 'tempodefestaads@gmail.com' 
+        : 'atendimento@tempodefestas.com.br, tempodefestaads@gmail.com, tempodefestas@tempodefestas.com.br';
 
     const mailOptions = {
       from: '"Tempo de Festas" <' + Deno.env.get("SMTP_USER") + '>',
