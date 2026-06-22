@@ -7,110 +7,214 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+// ── In-memory cache ────────────────────────────────────────────────────────────
+// Persists across warm requests within the same Edge Function instance.
+// TTL: 5 minutes for product lists, 10 minutes for the classes list.
+const CACHE_TTL_PRODUCTS_MS = 5 * 60 * 1000;   // 5 min
+const CACHE_TTL_CLASSES_MS  = 10 * 60 * 1000;  // 10 min
+
+interface CacheEntry { data: unknown; expiresAt: number; }
+const cache = new Map<string, CacheEntry>();
+
+function cacheGet(key: string): unknown | null {
+  const entry = cache.get(key);
+  if (!entry) return null;
+  if (Date.now() > entry.expiresAt) { cache.delete(key); return null; }
+  return entry.data;
+}
+function cacheSet(key: string, data: unknown, ttlMs: number) {
+  cache.set(key, { data, expiresAt: Date.now() + ttlMs });
+}
+
+// ── MySQL connection with retry ────────────────────────────────────────────────
+async function createConnection(ca_cert: string, client_cert: string, client_key: string, attempt = 1) {
+  const host     = Deno.env.get('VANE_DB_HOST');
+  const user     = Deno.env.get('VANE_DB_USER');
+  const password = Deno.env.get('VANE_DB_PASS');
+  const database = Deno.env.get('VANE_DB_NAME');
+
+  if (!host || !user || !password || !database) {
+    throw new Error('Credenciais do banco de dados não configuradas nos Secrets da Edge Function.');
+  }
+
+  try {
+    const conn = await mysql.createConnection({
+      host,
+      user,
+      password,
+      database,
+      charset: 'utf8mb4',
+      connectTimeout: 8000,
+      ssl: {
+        ca: ca_cert,
+        key: client_key,
+        cert: client_cert,
+        rejectUnauthorized: false
+      }
+    });
+    await conn.execute("SET NAMES utf8mb4");
+    return conn;
+  } catch (err) {
+    if (attempt < 2) {
+      await new Promise(r => setTimeout(r, 1000));
+      return createConnection(ca_cert, client_cert, client_key, attempt + 1);
+    }
+    throw err;
+  }
+}
+
+// ── Main handler ───────────────────────────────────────────────────────────────
 serve(async (req) => {
-  // CORS Preflight
   if (req.method === 'OPTIONS') {
-    return new Response('ok', { headers: corsHeaders })
+    return new Response('ok', { headers: corsHeaders });
   }
 
   try {
     const url = new URL(req.url);
-    const page = parseInt(url.searchParams.get('page') || '1');
-    const limit = parseInt(url.searchParams.get('limit') || '12');
-    const offset = (page - 1) * limit;
-    const fetchIds = url.searchParams.get('ids'); // comma separated ids for AI search
-
-    // Retrieve SSL strings from Supabase Secrets and ensure escaped newlines are properly parsed
-    const ca_cert = Deno.env.get('VANE_CA_CERT')?.replace(/\\n/g, '\n');
-    const client_cert = Deno.env.get('VANE_CLIENT_CERT')?.replace(/\\n/g, '\n');
-    const client_key = Deno.env.get('VANE_CLIENT_KEY')?.replace(/\\n/g, '\n');
-
-
-    if (!ca_cert || !client_cert || !client_key) {
-        throw new Error("Misconfigured MySQL SSL Secrets in Edge Function");
-    }
-
-    const connection = await mysql.createConnection({
-        host: '3f98f2a8-3db7-4eaf-b053-8473bc5010e9.vanesistemas.com',
-        user: 'vane_utempodefesta',
-        password: 'chronos_tempodefestan@vane88', // This could also be a secret, keeping here for sync
-        database: 'vane_tempodefesta',
-        charset: 'utf8mb4',
-        ssl: {
-            ca: ca_cert,
-            key: client_key,
-            cert: client_cert,
-            rejectUnauthorized: false
-        }
-    });
-
-    let results = [];
-    const action = url.searchParams.get('action');
+    const page         = parseInt(url.searchParams.get('page')  || '1');
+    const limit        = parseInt(url.searchParams.get('limit') || '12');
+    const offset       = (page - 1) * limit;
+    const fetchIds     = url.searchParams.get('ids');
+    const action       = url.searchParams.get('action');
     const classeFilter = url.searchParams.get('classe');
 
+    // ── Build cache key ──────────────────────────────────────────────────────
+    let cacheKey: string | null = null;
+    let cacheTtl = CACHE_TTL_PRODUCTS_MS;
+
     if (action === 'classes') {
-        const [rows] = await connection.execute(
-            `SELECT DISTINCT Classe FROM produtos WHERE Setor = 'CATÁLOGO' AND Ativo = 1 AND NomeDaImagem IS NOT NULL AND NomeDaImagem != '' AND Classe IS NOT NULL AND Classe != ''`
-        );
-        results = rows.map((r: any) => r.Classe);
-        await connection.end();
-        return new Response(JSON.stringify(results), {
-            headers: { 
-                ...corsHeaders, 
-                'Content-Type': 'application/json',
-                'Cache-Control': 'public, max-age=60, s-maxage=300'
-            },
-        });
+      cacheKey = 'classes';
+      cacheTtl = CACHE_TTL_CLASSES_MS;
     } else if (fetchIds) {
-        // IDs via AI semantic search
-        const idsArray = fetchIds.split(',').map(id => parseInt(id)).filter(id => !isNaN(id));
-        if (idsArray.length === 0) {
-            return new Response(JSON.stringify([]), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
-        }
-        const placeholders = idsArray.map(() => '?').join(',');
-        const [rows] = await connection.execute(
-            `SELECT CodigoDoProduto, Descricao, ValorLocacao, NomeDaImagem, Classe FROM produtos WHERE CodigoDoProduto IN (${placeholders}) AND Setor = 'CATÁLOGO'`,
-            idsArray
-        );
-        results = rows;
+      cacheKey = `ids:${fetchIds}`;
     } else if (classeFilter && classeFilter !== 'Todos') {
-        const [rows] = await connection.execute(
-            `SELECT CodigoDoProduto, Descricao, ValorLocacao, NomeDaImagem, Classe FROM produtos WHERE Ativo = 1 AND Setor = 'CATÁLOGO' AND Classe = ? AND NomeDaImagem IS NOT NULL AND NomeDaImagem != '' LIMIT ? OFFSET ?`,
-            [classeFilter, String(limit), String(offset)]
-        );
-        results = rows;
+      cacheKey = `classe:${classeFilter}:p${page}:l${limit}`;
     } else {
-        // Normal Catalog Query
-        const [rows] = await connection.execute(
-            `SELECT CodigoDoProduto, Descricao, ValorLocacao, NomeDaImagem, Classe FROM produtos WHERE Ativo = 1 AND Setor = 'CATÁLOGO' AND NomeDaImagem IS NOT NULL AND NomeDaImagem != '' LIMIT ? OFFSET ?`,
-            [String(limit), String(offset)] // Execute needs strings for limit/offset in mysql2 array
-        );
-        results = rows;
+      cacheKey = `all:p${page}:l${limit}`;
+    }
+
+    // ── Cache hit? Return immediately ────────────────────────────────────────
+    if (cacheKey) {
+      const cached = cacheGet(cacheKey);
+      if (cached !== null) {
+        return new Response(JSON.stringify(cached), {
+          headers: {
+            ...corsHeaders,
+            'Content-Type': 'application/json',
+            'Cache-Control': 'public, max-age=60, s-maxage=300',
+            'X-Cache': 'HIT'
+          }
+        });
+      }
+    }
+
+    // ── SSL secrets ──────────────────────────────────────────────────────────
+    const ca_cert     = Deno.env.get('VANE_CA_CERT')?.replace(/\\n/g, '\n');
+    const client_cert = Deno.env.get('VANE_CLIENT_CERT')?.replace(/\\n/g, '\n');
+    const client_key  = Deno.env.get('VANE_CLIENT_KEY')?.replace(/\\n/g, '\n');
+
+    if (!ca_cert || !client_cert || !client_key) {
+      throw new Error("Misconfigured MySQL SSL Secrets in Edge Function");
+    }
+
+    // ── Connect (with retry) ─────────────────────────────────────────────────
+    const connection = await createConnection(ca_cert, client_cert, client_key);
+
+    let results: unknown[] = [];
+
+    if (action === 'classes') {
+      const [rows] = await connection.execute(
+        `SELECT DISTINCT Classe FROM produtos
+         WHERE Setor = 'CATÁLOGO' AND Ativo = 1
+           AND NomeDaImagem IS NOT NULL AND NomeDaImagem != ''
+           AND Classe IS NOT NULL AND Classe != ''`
+      ) as [Array<{Classe: string}>];
+      results = rows.map((r) => r.Classe);
+      await connection.end();
+
+      cacheSet(cacheKey!, results, cacheTtl);
+
+      return new Response(JSON.stringify(results), {
+        headers: {
+          ...corsHeaders,
+          'Content-Type': 'application/json',
+          'Cache-Control': 'public, max-age=60, s-maxage=300',
+          'X-Cache': 'MISS'
+        }
+      });
+
+    } else if (fetchIds) {
+      const idsArray = fetchIds.split(',').map(id => parseInt(id)).filter(id => !isNaN(id));
+      if (idsArray.length === 0) {
+        await connection.end();
+        return new Response(JSON.stringify([]), {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+      const placeholders = idsArray.map(() => '?').join(',');
+      const [rows] = await connection.execute(
+        `SELECT CodigoDoProduto, Descricao, ValorLocacao, NomeDaImagem, Classe
+         FROM produtos
+         WHERE CodigoDoProduto IN (${placeholders}) AND Setor = 'CATÁLOGO'`,
+        idsArray
+      ) as [Array<Record<string, unknown>>];
+      results = rows;
+
+    } else if (classeFilter && classeFilter !== 'Todos') {
+      const [rows] = await connection.execute(
+        `SELECT CodigoDoProduto, Descricao, ValorLocacao, NomeDaImagem, Classe
+         FROM produtos
+         WHERE Ativo = 1 AND Setor = 'CATÁLOGO' AND Classe = ?
+           AND NomeDaImagem IS NOT NULL AND NomeDaImagem != ''
+         LIMIT ? OFFSET ?`,
+        [classeFilter, String(limit), String(offset)]
+      ) as [Array<Record<string, unknown>>];
+      results = rows;
+
+    } else {
+      const [rows] = await connection.execute(
+        `SELECT CodigoDoProduto, Descricao, ValorLocacao, NomeDaImagem, Classe
+         FROM produtos
+         WHERE Ativo = 1 AND Setor = 'CATÁLOGO'
+           AND NomeDaImagem IS NOT NULL AND NomeDaImagem != ''
+         LIMIT ? OFFSET ?`,
+        [String(limit), String(offset)]
+      ) as [Array<Record<string, unknown>>];
+      results = rows;
     }
 
     await connection.end();
 
-    // Map output to build URLs and fix charsets
-    const finalData = results.map((row: any) => ({
-        id: row.CodigoDoProduto,
-        nome: row.Descricao,
-        preco: row.ValorLocacao,
-        categoria: row.Classe,
-        img_url: row.NomeDaImagem ? `https://fotos2.vanesistemas.com/app/arquivo_publico2/395/23894710000108/${row.NomeDaImagem}` : null
+    // ── Map output ───────────────────────────────────────────────────────────
+    const finalData = (results as Array<Record<string, unknown>>).map((row) => ({
+      id:        row.CodigoDoProduto,
+      nome:      row.Descricao,
+      preco:     row.ValorLocacao,
+      categoria: row.Classe,
+      img_url:   row.NomeDaImagem
+        ? `https://fotos2.vanesistemas.com/app/arquivo_publico2/395/23894710000108/${row.NomeDaImagem}`
+        : null
     }));
 
+    if (cacheKey) cacheSet(cacheKey, finalData, cacheTtl);
+
     return new Response(JSON.stringify(finalData), {
-        headers: { 
-            ...corsHeaders, 
-            'Content-Type': 'application/json',
-            'Cache-Control': 'public, max-age=60, s-maxage=300'
-        },
+      headers: {
+        ...corsHeaders,
+        'Content-Type': 'application/json',
+        'Cache-Control': 'public, max-age=60, s-maxage=300',
+        'X-Cache': 'MISS'
+      }
     });
 
   } catch (error) {
-    return new Response(JSON.stringify({ error: error.message }), {
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      status: 400,
-    })
+    console.error('[vane-proxy] error:', error);
+    return new Response(
+      JSON.stringify({ error: "Serviço temporariamente indisponível." }),
+      {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        status: 503
+      }
+    );
   }
-})
+});
