@@ -142,6 +142,9 @@
                                 <button id="btn-status" class="bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 px-4 py-2 rounded-lg text-xs font-bold transition-colors shadow-sm flex items-center gap-2">
                                     <i data-lucide="check-circle" class="w-4 h-4"></i> Marcar como Atendido
                                 </button>
+                                <button id="btn-copy-wa" onclick="copyWaText()" class="bg-slate-800 text-white hover:bg-slate-700 px-4 py-2 rounded-lg text-xs font-bold transition-colors shadow-sm flex items-center gap-2">
+                                    <i data-lucide="copy" class="w-4 h-4"></i> Copiar texto
+                                </button>
                                 <a id="btn-whatsapp" href="#" target="_blank" class="bg-green-500 text-white hover:bg-green-600 px-4 py-2 rounded-lg text-xs font-bold transition-colors shadow-sm shadow-green-200 flex items-center gap-2">
                                     <i data-lucide="message-circle" class="w-4 h-4"></i> Falar no WhatsApp
                                 </a>
@@ -154,6 +157,21 @@
                         <h3 class="text-sm font-bold tracking-widest uppercase text-slate-400 mb-6 flex items-center gap-2"><i data-lucide="package" class="w-4 h-4"></i> Itens Solicitados</h3>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-6" id="detail-items">
                             <!-- Itens injectados aqui -->
+                        </div>
+
+                        <!-- Bloco texto WhatsApp -->
+                        <div id="wa-text-block" class="hidden mt-8">
+                            <h3 class="text-sm font-bold tracking-widest uppercase text-slate-400 mb-3 flex items-center gap-2">
+                                <i data-lucide="message-square" class="w-4 h-4"></i> Texto para WhatsApp
+                            </h3>
+                            <div class="relative">
+                                <textarea id="wa-text-area" readonly rows="12"
+                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm text-slate-700 font-mono leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-amber-400"
+                                ></textarea>
+                                <button onclick="copyWaText()" class="absolute top-3 right-3 bg-slate-800 hover:bg-slate-700 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors">
+                                    <i data-lucide="copy" class="w-3 h-3"></i> Copiar
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -630,7 +648,57 @@
                             </div>
                         </div>
                     </div>
-                `;
+                `;\n            });
+
+            // Gerar texto WhatsApp
+            const nomeCliente = orcamento.nome_cliente;
+            const dataEvento = orcamento.data_evento
+                ? new Date(orcamento.data_evento + 'T12:00:00').toLocaleDateString('pt-BR')
+                : 'Não informada';
+
+            const linhasItens = itens.map(item => {
+                const cacheProd = window.acervoManual ? window.acervoManual.find(p => p.id == item.produto_id) : null;
+                const prod = item.metadata || {
+                    nome: cacheProd ? cacheProd.Descricao : 'Produto Personalizado',
+                    preco: cacheProd ? cacheProd.valor : null
+                };
+                const precoUnit = parseFloat(prod.preco || prod.valor || 0);
+                const total = precoUnit > 0
+                    ? `R$ ${(precoUnit * item.quantidade).toFixed(2).replace('.', ',')}`
+                    : 'Sob Consulta';
+                return `• ${prod.nome} - Cód: ${item.produto_id} - ${item.quantidade}x - ${total}`;
+            }).join('\n');
+
+            const waText =
+`Olá ${nomeCliente}! Segue o orçamento conforme solicitado, de acordo com os itens selecionados no carrinho do nosso site.
+
+Abaixo, estão relacionados os itens que compõem o orçamento.
+
+${linhasItens}
+
+Evento: ${dataEvento}
+
+Qualquer dúvida, estamos à disposição para ajudar!`;
+
+            document.getElementById('wa-text-area').value = waText;
+            document.getElementById('wa-text-block').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function copyWaText() {
+            const area = document.getElementById('wa-text-area');
+            if (!area) return;
+            navigator.clipboard.writeText(area.value).then(() => {
+                const btn = document.getElementById('btn-copy-wa');
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> Copiado!';
+                btn.classList.replace('bg-slate-800', 'bg-green-600');
+                lucide.createIcons();
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.classList.replace('bg-green-600', 'bg-slate-800');
+                    lucide.createIcons();
+                }, 2000);
             });
         }
 
