@@ -664,7 +664,8 @@
                     nome: cacheProd ? cacheProd.Descricao : 'Produto Personalizado',
                     preco: cacheProd ? cacheProd.valor : null
                 };
-                const precoUnit = parseFloat(prod.preco || prod.valor || 0);
+                const rawPreco = prod.preco || prod.valor || '0';
+                const precoUnit = parseFloat(String(rawPreco).replace(/[R$\s.]/g, '').replace(',', '.')) || 0;
                 const total = precoUnit > 0
                     ? `R$ ${(precoUnit * item.quantidade).toFixed(2).replace('.', ',')}`
                     : 'Sob Consulta';
