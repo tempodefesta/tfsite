@@ -683,7 +683,7 @@ Qualquer dúvida, estamos à disposição para ajudar!`;
             lucide.createIcons();
         }
 
-        function copyWaText() {
+        window.copyWaText = function() {
             const area = document.getElementById('wa-text-area');
             const btn = document.getElementById('btn-copy-wa');
             if (!area || !btn) return;
