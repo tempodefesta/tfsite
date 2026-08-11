@@ -768,98 +768,47 @@ Qualquer dúvida, estamos à disposição para ajudar!`;
             `;
             iaChatBox.scrollTop = iaChatBox.scrollHeight;
 
-            // Integração Real de IA (Embeddings OpenAI -> RAG Supabase -> Completion)
+            // Integração via Edge Function segura (embedding + pgvector + GPT-4o no servidor)
             try {
-                // Chave particionada para não acionar bloqueio do Github
-        const API_KEY = "sk-proj-xKeadYwx8" + "xV36OpOhstXGfZ-UKyv6JEdxjHFPGclEzdObr_vHOATyclLGyVn4CMCQe1nsQ_8FVT3BlbkFJ5lVSdRDoHo4sOTjhc3X6a8HAl-A8rlygY12ebcHPDxIsS-V7aBTUbq_uxMvsqwUYj5CR7CwOAA"; 
-                const MODEL = "gpt-4o-mini";
-                const companyYears = new Date().getFullYear() - 1990;
-
-                // 1. Obter o Embedding da Descrição
-                const embeddingResponse = await fetch('https://api.openai.com/v1/embeddings', {
+                const curatorRes = await fetch('https://kdqwiscohcxpsfzcfcyx.supabase.co/functions/v1/ai-curator', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${API_KEY}` },
-                    body: JSON.stringify({ input: promptStr, model: "text-embedding-3-small" })
-                });
-                const embeddingData = await embeddingResponse.json();
-                const queryEmbedding = embeddingData.data[0].embedding;
-
-                // 2. Busca Semântica no Catálogo (RAG)
-                const { data: matchedProducts, error: matchError } = await supabase.rpc('match_produtos', {
-                    query_embedding: queryEmbedding,
-                    match_threshold: 0.1, 
-                    match_count: 50       
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtkcXdpc2NvaGN4cHNmemNmY3l4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU5MjI0OTAsImV4cCI6MjA5MTQ5ODQ5MH0.seHvqOMljOpD8SBAyB80ltRjX-7Shk5L_QMsbygDuw0'
+                    },
+                    body: JSON.stringify({ description: promptStr })
                 });
 
-                if (matchError) throw matchError;
+                if (!curatorRes.ok) throw new Error('Serviço de curadoria indisponível.');
+                const curatorData = await curatorRes.json();
+
+                const aiSelection = curatorData.sugestoes || [];
+                const contextCatalog = curatorData.contextCatalog || [];
 
                 const formatMoneyLocal = (val) => val ? new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val) : 'Sob Consulta';
-                let matchedDetails = [];
-                if (matchedProducts && matchedProducts.length > 0) {
-                    const idsToFetch = matchedProducts.map(m => m.vane_id).join(',');
-                    const resProxy = await fetch(`https://kdqwiscohcxpsfzcfcyx.supabase.co/functions/v1/vane-proxy?ids=${idsToFetch}`);
-                    if (resProxy.ok) {
-                        matchedDetails = await resProxy.json();
-                        // Formatar o array para reduzir atrito na análise de LLM
-                        matchedDetails = matchedDetails.map(p => ({
-                            ...p,
-                            categoria: p.categoria || p.Classe || 'Geral', 
-                            valor: formatMoneyLocal(p.preco || p.ValorLocacao)
-                        }));
-                    }
-                }
-
-                const contextCatalog = matchedDetails.length > 0 ? matchedDetails : (typeof acervoManual !== 'undefined' ? acervoManual.slice(0, 50) : []);
-
-                const systemPrompt = `És um consultor de eventos de luxo da "Tempo de Festas" (${companyYears} anos de tradição em BH).
-                Com base na descrição do usuário, deves selecionar uma curadoria rica e completa de produtos (idealmente entre 6 a 12 itens) do catálogo abaixo (já pré-filtrado via busca semântica) que melhor condizem com o evento proposto.
-                DEVES RETORNAR EXCLUSIVAMENTE UM JSON no formato: {"sugestoes": [{"id": 1234, "motivo": "Explicação curta e sofisticada de por que escolheu este item"}]}.
-                O VALOR DO id DEVE SER EXATAMENTE IGUAL AO 'id' FORNECIDO NO CATÁLOGO, NUNCA INVENTE UM ID NUMÉRICO.
-                CATÁLOGO DISPONÍVEL (Pré-seleção Vetorial): ${JSON.stringify(contextCatalog)}`;
-
-                // 3. Chamada à API OpenAI
-                const response = await fetch(`https://api.openai.com/v1/chat/completions`, {
-                    method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${API_KEY}`
-                    },
-                    body: JSON.stringify({
-                        model: MODEL,
-                        messages: [
-                            { role: "system", content: systemPrompt },
-                            { role: "user", content: promptStr }
-                        ],
-                        response_format: { type: "json_object" }
-                    })
-                });
-
-                const data = await response.json();
-                let parsedResult = JSON.parse(data.choices[0].message.content);
-                const aiSelection = Array.isArray(parsedResult) ? parsedResult : (parsedResult.items || parsedResult.sugestoes || Object.values(parsedResult)[0] || []);
 
                 let mockItems = [];
-                if(aiSelection && aiSelection.forEach) {
-                    aiSelection.forEach(item => {
-                        const product = contextCatalog.find(p => String(p.id) === String(item.id) || String(p.CodigoDoProduto) === String(item.id));
-                        if(product) {
-                            mockItems.push({
-                                ...product,
-                                id: parseInt(product.id || product.CodigoDoProduto),
-                                aiTip: item.motivo
-                            });
-                        }
-                    });
-                }
-                
-                // Se a IA falhar a extração, usar todos matches semânticos
-                if(mockItems.length === 0) {
+                aiSelection.forEach(item => {
+                    const product = contextCatalog.find(p => String(p.id) === String(item.id));
+                    if (product) {
+                        mockItems.push({
+                            ...product,
+                            id: parseInt(product.id),
+                            valor: product.valor || formatMoneyLocal(product.preco),
+                            aiTip: item.motivo
+                        });
+                    }
+                });
+
+                // Se a IA não extraiu nada, usar todos os matches semânticos
+                if (mockItems.length === 0) {
                     mockItems = contextCatalog.slice(0, 8).map(p => ({
                         ...p,
-                        id: parseInt(p.id || p.CodigoDoProduto),
-                        aiTip: "Selecionado perfeitamente via RAG semântico."
+                        id: parseInt(p.id),
+                        aiTip: 'Selecionado via busca semântica.'
                     }));
                 }
+
 
                 document.getElementById(loadingId).remove();
                 
