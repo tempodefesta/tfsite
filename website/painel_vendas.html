@@ -653,6 +653,7 @@
                 ? new Date(orcamento.data_evento + 'T12:00:00').toLocaleDateString('pt-BR')
                 : 'Não informada';
 
+            let totalGeral = 0;
             const linhasItens = itens.map(item => {
                 const cacheProd = window.acervoManual ? window.acervoManual.find(p => p.id == item.produto_id) : null;
                 const prod = item.metadata || {
@@ -661,11 +662,17 @@
                 };
                 const rawPreco = prod.preco || prod.valor || '0';
                 const precoUnit = parseFloat(String(rawPreco).replace(/[R$\s.]/g, '').replace(',', '.')) || 0;
-                const total = precoUnit > 0
-                    ? `R$ ${(precoUnit * item.quantidade).toFixed(2).replace('.', ',')}`
+                const subtotal = precoUnit * item.quantidade;
+                totalGeral += subtotal;
+                const totalFmt = precoUnit > 0
+                    ? `R$ ${subtotal.toFixed(2).replace('.', ',')}`
                     : 'Sob Consulta';
-                return `• ${prod.nome} - Cód: ${item.produto_id} - ${item.quantidade}x - ${total}`;
+                return `• ${prod.nome} - Cód: ${item.produto_id} - ${item.quantidade}x - ${totalFmt}`;
             }).join('\n');
+
+            const totalGeralFmt = totalGeral > 0
+                ? `R$ ${totalGeral.toFixed(2).replace('.', ',')}`
+                : '';
 
             const waText =
 `Olá ${nomeCliente}! Segue o orçamento conforme solicitado, de acordo com os itens selecionados no carrinho do nosso site.
@@ -673,7 +680,7 @@
 Abaixo, estão relacionados os itens que compõem o orçamento.
 
 ${linhasItens}
-
+${totalGeralFmt ? `\n*Total estimado: ${totalGeralFmt}*` : ''}
 Evento: ${dataEvento}
 
 Qualquer dúvida, estamos à disposição para ajudar!`;
